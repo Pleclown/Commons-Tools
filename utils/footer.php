@@ -1,0 +1,18 @@
+</div></div>
+<div id="column-one">
+<div class="portlet" id="p-logo"><a style="background-image: url(//wikitech.wikimedia.org/w/images/thumb/6/60/Wikimedia_labs_logo.svg/120px-Wikimedia_labs_logo.svg.png);" href="/commonsuploadsum/" title="Main Page"></a></div>
+<div class='portlet' id='p-navigation'><h5 style="-moz-border-radius-topright: 10px;">Navigation</h5><div class='pBody'>
+<ul>
+<li><a href="/">Wikimedia Tool Labs</a></li>
+<li><a href="/commonsuploadsum/">Main Page</a></li>
+</ul>
+</div></div>
+<div class='portlet' id='p-tools-others'><h5 style="-moz-border-radius-topright: 10px;">Tools</h5><div class='pBody'>
+<ul>
+<li><a href="uploadsum.php">Upload counter</a></li>
+</ul>
+</div></div>
+<div class='portlet' id='p-report-bug'><h5 style="-moz-border-radius-topright: 10px;">Report a bug</h5><div class='pBody'>
+Feel free to report a bug or to suggest a change on <a href="http://meta.wikimedia.org/wiki/User talk:Pleclown">my user talk page</a> !
+</div></div>
+</div></div></body></html>
