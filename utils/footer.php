@@ -12,6 +12,11 @@
 <li><a href="uploadsum.php">Upload counter</a></li>
 </ul>
 </div></div>
+<div class='portlet' id='p-git'><h5 style="-moz-border-radius-topright: 10px;">Git repository</h5><div class='pBody'>
+<ul>
+<li><a href="https://github.com/Pleclown/Commons-Tools">On Github</a></li>
+</ul>
+</div></div>
 <div class='portlet' id='p-report-bug'><h5 style="-moz-border-radius-topright: 10px;">Report a bug</h5><div class='pBody'>
 Feel free to report a bug or to suggest a change on <a href="http://meta.wikimedia.org/wiki/User talk:Pleclown">my user talk page</a> !
 </div></div>
