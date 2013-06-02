@@ -5,7 +5,11 @@ $h1='Commons Uploadcounter';
 include('utils/header.php');
 
 
-$name=$_GET['user'];
+if (!empty($_GET)) {
+	$name=$_GET['user'];
+}else{
+	$name='';
+}
 ?>
 <fieldset><legend>Uploadcounter</legend>
 <form method="get" action="uploadsum.php" id="mw-sulinfo-form1">
@@ -16,7 +20,7 @@ $name=$_GET['user'];
 <?php
 if ($name != '') {
 $ts_pw = posix_getpwuid(posix_getuid());
-$ts_mycnf = parse_ini_file("/data/project/commonsuploadsum/replica.my.cnf");
+$ts_mycnf = parse_ini_file("../replica.my.cnf");
 $db = mysql_connect('commonswiki.labsdb', $ts_mycnf['user'], $ts_mycnf['password']);
 unset($ts_mycnf, $ts_pw);
  
@@ -66,7 +70,9 @@ while ($row = mysql_fetch_assoc($result)) {
     $str_piecount .= '[\''.$type.'\', '.$compte.'],';
     $str_desccount .= '<p><strong>'.$type.' :</strong> '.$compte.' files.</p>';
 }
-*/
+ */
+$somme2 = 0;
+$compte2 = 0;
 while ($row = mysql_fetch_assoc($result)) {
     $type = $row['type']; 
     $somme = $row['somme'];
