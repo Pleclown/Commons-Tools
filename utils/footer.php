@@ -4,12 +4,13 @@
 <div class='portlet' id='p-navigation'><h5 style="-moz-border-radius-topright: 10px;">Navigation</h5><div class='pBody'>
 <ul>
 <li><a href="/">Wikimedia Tool Labs</a></li>
-<li><a href="/commonsuploadsum/">Main Page</a></li>
+<li><a href="/ptools/">Main Page</a></li>
 </ul>
 </div></div>
 <div class='portlet' id='p-tools-others'><h5 style="-moz-border-radius-topright: 10px;">Tools</h5><div class='pBody'>
 <ul>
 <li><a href="uploadsum.php">Upload counter</a></li>
+<li><a href="findfiles.php">Find files in cat for user</a></li>
 </ul>
 </div></div>
 <div class='portlet' id='p-git'><h5 style="-moz-border-radius-topright: 10px;">Git repository</h5><div class='pBody'>
