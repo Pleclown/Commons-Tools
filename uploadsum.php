@@ -10,6 +10,7 @@ if (!empty($_GET)) {
 }else{
 	$name='';
 }
+$name = htmlspecialchars($name);
 ?>
 <fieldset><legend>Uploadcounter</legend>
 <form method="get" action="uploadsum.php" id="mw-sulinfo-form1">
