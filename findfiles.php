@@ -33,7 +33,7 @@ $category = htmlspecialchars($category);
 
 if ($name != '') {
 $ts_pw = posix_getpwuid(posix_getuid());
-$ts_mycnf = parse_ini_file("/data/project/commonsuploadsum/replica.my.cnf");
+$ts_mycnf = parse_ini_file("../replica.my.cnf");
 $db = mysql_connect('commonswiki.labsdb', $ts_mycnf['user'], $ts_mycnf['password']);
 unset($ts_mycnf, $ts_pw);
  
