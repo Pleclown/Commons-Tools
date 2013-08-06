@@ -22,33 +22,46 @@ while ($row = mysql_fetch_assoc($result)) {
 mysql_free_result($result); 
 */
 class database{
-private $connection;
+public $connection;
 public $connected = false;
   public function connect($db){
-    $ts_pw = posix_getpwuid(posix_getuid());
+    //$ts_pw = posix_getpwuid(posix_getuid());
     $ts_mycnf = parse_ini_file("../replica.my.cnf");
-    $connection = new mysqli('commonswiki.labsdb', $ts_mycnf['user'], $ts_mycnf['password'],'commonswiki_p');
-    if ($connection->connect_error){
-      echo '<fieldset><legend>Error</legend>Error connecting to database.</fieldset>';
+    $this->connection = new mysqli('commonswiki.labsdb', $ts_mycnf['user'], $ts_mycnf['password'],'commonswiki_p');
+    if ($this->connection->connect_error){
+      echo '<fieldset><legend>Error</legend>Error connecting to database. '.$connection->connect_error.' '.$ts_mycnf['user'].'</fieldset>';
     }else
     {
-      $connected = true;
+      $this->connected = true;
     }
-    return $connected;
+    return $this->connected;
   }
 
   public function execute($query,$params){
-    $stmt =  $connection->stmt_init();    
-    if ($stmt->prepare($query)) {
-      call_user_func_array(array($stmt, 'bind_param'), refValues($params));
+	  $stmt =  $this->connection->stmt_init();    
+	  if ($stmt->prepare($query)) {
+	    echo 'prepared';
+	    call_user_func_array(array($stmt, 'bind_param'), $this->refValues($params));
       $stmt->execute();
+      
       $result = $stmt->get_result();
       return $result->fetch_array(MYSQLI_NUM);
     }
     else
     {
-      return NULL;
+	    return NULL;
     }   
   }
+
+  private function refValues($arr){
+	          if (strnatcmp(phpversion(),'5.3') >= 0) //Reference is required for PHP 5.3+
+			          {
+					              $refs = array();
+						                  foreach($arr as $key => $value)
+									                  $refs[$key] = &$arr[$key];
+								              return $refs;
+								          }
+		          return $arr;
+		      }
 }
 ?>
