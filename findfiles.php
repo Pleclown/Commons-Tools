@@ -1,6 +1,8 @@
 <?php
 
 include('utils/functions.php');
+include('utils/user.php');
+include('utils/database.php');
 $title = 'Find files in cat';
 $h1='Commons files finder';
 include('utils/header.php');
@@ -15,8 +17,6 @@ $category = '';
 $reverse = '';
 }
 
-$name = htmlspecialchars($name);
-$category = htmlspecialchars($category);
 
 ?>
 <fieldset><legend>Find files in cat for user</legend>
@@ -31,7 +31,15 @@ $category = htmlspecialchars($category);
 </form></fieldset>
 <?php
 
-if ($name != '') {
+if (($name != '') and ($category != '')) {
+$db = new database;
+if ($db->connect('commonswiki')) {
+
+$user = new user;
+$user->load($db,$name);
+$user->printUser;
+
+/*
 $ts_pw = posix_getpwuid(posix_getuid());
 $ts_mycnf = parse_ini_file("../replica.my.cnf");
 $db = mysql_connect('commonswiki.labsdb', $ts_mycnf['user'], $ts_mycnf['password']);
@@ -81,9 +89,9 @@ echo $list;
 ?>
 </fieldset>
 <?php
+*/
 }
-/*
- */
+}
 include('utils/footer.php');
  
 ?>
