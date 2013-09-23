@@ -1,4 +1,9 @@
 <?php
+const QUERY_USER_IN_CAT ='select distinct page_title from page, image where page_namespace = 6 and img_name = page_title and img_user = ? and page_id in (SELECT distinct cl_from from categorylinks where cl_to IN ("?"))';
+
+const QUERY_USER_NOT_IN_CAT ='select distinct page_title from page, image where page_namespace = 6 and img_name = page_title and img_user = ? and page_id not in (SELECT distinct cl_from from categorylinks where cl_to IN ("?"))';
+
+
 function octets($n){
 	$i=0;
 	while ($n > 1024){

@@ -1,5 +1,6 @@
 <?php
 
+
 include('utils/functions.php');
 include('utils/user.php');
 
@@ -40,32 +41,25 @@ $user = new user;
 $user->load($db,$name);
 $user->printUser();
 
-/*
-
-mysql_free_result($result); 
 $category = str_replace ( ' ' , '_' , $category);
-$query = 'select distinct page_title from page, image where page_namespace = 6 and img_name = page_title and img_user = '.$user_id.' and page_id ';
-if ($reverse=='true') $query .= 'not';
-$query .=' in (SELECT distinct cl_from from categorylinks where cl_to IN ("'.$category.'"))';
+if ($reverse=='true')
+{
+  $result=$db->execute(QUERY_USER_NOT_IN_CAT,array($user->user_id,$category)); 
+}
+else
+{
+  $result=$db->execute(QUERY_USER_IN_CAT,array($user->user_id,$category)); 
+}
 
-$result = mysql_query($query);
-
-//echo $query;
 
 if (!$result){
 	die('Invalid query: ' .mysql_error());
 }
-while ($row = mysql_fetch_assoc($result)) {
-$list .= '<a href="//commons.wikimedia.org/wiki/File:'.$row['page_title'].'" >File:'.$row['page_title'].'</a><br/>';
+var_dump($result);
+//$list .= '<a href="//commons.wikimedia.org/wiki/File:'.$row['page_title'].'" >File:'.$row['page_title'].'</a><br/>';
 }
 
-mysql_free_result($result); 
 ?>
-<fieldset><legend>User</legend>
-<p><strong>Name : </strong> <?php echo $name; ?></p>
-<p><strong>User ID : </strong> <?php echo $user_id; ?></p>
-<p><strong>Registered : </strong> <?php echo date('d/m/Y',strtotime($user_registration)); ?></p>
-</fieldset>
 <fieldset><legend>List</legend>
 <?php
 echo $list;
@@ -73,7 +67,6 @@ echo $list;
 </fieldset>
 <?php
 */
-}else{ echo 'prout';}
 }
 include('utils/footer.php');
  
