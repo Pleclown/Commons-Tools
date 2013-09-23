@@ -2,6 +2,7 @@
 
 include('utils/functions.php');
 include('utils/user.php');
+
 include('utils/database.php');
 $title = 'Find files in cat';
 $h1='Commons files finder';
@@ -34,30 +35,12 @@ $reverse = '';
 if (($name != '') and ($category != '')) {
 $db = new database;
 if ($db->connect('commonswiki')) {
-
+echo 'toto';
 $user = new user;
 $user->load($db,$name);
-$user->printUser;
+$user->printUser();
 
 /*
-$ts_pw = posix_getpwuid(posix_getuid());
-$ts_mycnf = parse_ini_file("../replica.my.cnf");
-$db = mysql_connect('commonswiki.labsdb', $ts_mycnf['user'], $ts_mycnf['password']);
-unset($ts_mycnf, $ts_pw);
- 
-mysql_select_db('commonswiki_p', $db);
-
- 
-// YOUR REQUEST HERE
-$result = mysql_query('select user_id, user_registration, user_editcount from user u where user_name="'.$name.'";');
-if (!$result){
-die('Invalid query: ' .mysql_error());
-}
-while ($row = mysql_fetch_assoc($result)) {
-    $user_id = $row['user_id']; 
-    $user_registration = $row['user_registration'];
-    $user_edit_count = $row['user_editcount'];
-}
 
 mysql_free_result($result); 
 $category = str_replace ( ' ' , '_' , $category);
@@ -90,7 +73,7 @@ echo $list;
 </fieldset>
 <?php
 */
-}
+}else{ echo 'prout';}
 }
 include('utils/footer.php');
  
