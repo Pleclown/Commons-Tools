@@ -14,19 +14,15 @@ class user{
 
    public function load($aConnection, $aName)
    {
-       echo 'ah ? ';
 	   $connection = $aConnection;
        $this->user_name = $aName;
-       $result = $connection->execute(user::QUERY_USER_BY_NAME,array('s',$this->user_name));
-       var_dump($result);
-       echo 'titi';
+       $result = $connection->execute(user::QUERY_USER_BY_NAME,array($this->user_name));
        if ($result != NULL){
-         $this->user_id = $result['user_id']; 
-         $this->user_registration = $result['user_registration'];
-         $this->user_edit_count = $result['user_editcount'];
+         $this->user_id = $result[0][0]; 
+         $this->user_registration = $result[0]['user_registration'];
+         $this->user_edit_count = $result[0]['user_editcount'];
          $this->loaded = true;
        }
-       echo 'prout !!!!!';
    } 
 
    public function printUser()
