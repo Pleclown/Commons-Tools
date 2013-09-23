@@ -52,11 +52,12 @@ else
 }
 
 
-if (!$result){
-	die('Invalid query: ' .mysql_error());
+if ($result != NULL){
+foreach ($result as $row)
+{
+$list .= '<a href="//commons.wikimedia.org/wiki/File:'.$row['page_title'].'" >File:'.$row['page_title'].'</a><br/>';
 }
-var_dump($result);
-//$list .= '<a href="//commons.wikimedia.org/wiki/File:'.$row['page_title'].'" >File:'.$row['page_title'].'</a><br/>';
+
 }
 
 ?>
@@ -66,7 +67,7 @@ echo $list;
 ?>
 </fieldset>
 <?php
-*/
+
 }
 include('utils/footer.php');
  
