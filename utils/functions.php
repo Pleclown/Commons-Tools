@@ -24,6 +24,34 @@ function octets($n){
 	return $n;
 }
 
+
+function PieChart($array, $column,$title,$div)
+{
+  $Result ='      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn(\'string\', \'Type\');
+        data.addColumn(\'number\', \''.$column.'\');
+        data.addRows([';
+	foreach($array as $key => $value)
+	{
+		$Result.='[\''.$key.'\','.$value.'],';	
+	}
+	$Result.='        ]);
+
+        var options = {
+          width: 600, height: 500,
+          title: \''.$title.'\'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById(\''.$div.'\'));
+        chart.draw(data, options);
+      }':
+      return $Result;
+}
+
+
 function MonthBarGraph($array, $column,$title,$div)
 {
 	$Result = 'google.load("visualization", "1", {packages:["corechart"]});
