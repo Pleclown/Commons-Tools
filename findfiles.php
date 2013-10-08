@@ -37,8 +37,7 @@ if (($name != '') and ($category != '')) {
 $db = new database;
 if ($db->connect('commonswiki')) {
 echo 'toto';
-$user = new user;
-$user->load($db,$name);
+$user = new user($db,$name);
 $user->printUser();
 
 $category = str_replace ( ' ' , '_' , $category);
