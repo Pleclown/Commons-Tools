@@ -36,7 +36,6 @@ $reverse = '';
 if (($name != '') and ($category != '')) {
 $db = new database;
 if ($db->connect('commonswiki')) {
-echo 'toto';
 $user = new user($db,$name);
 $user->printUser();
 
