@@ -10,8 +10,12 @@ class user{
    public $user_name = '';
    public $user_edit_count = '';
    public $user_registration = '';
-   private $user_uploadcount = 0;
-   private $user_uploadsize = 0;
+   private $user_uploadcount = -1;
+   private $user_uploadsize = -1;
+   private $user_moves = -1;
+   private $user_blocks = -1;
+   private $user_delete = -1;
+   private $user_uploadlog = -1;
    private $array_total_size= array();
    private $array_total_count= array();
    private $array_month_size= array();
@@ -67,7 +71,9 @@ User NOT found !
 ?>
 <fieldset><legend>General informations</legend>
 <p><strong>Total editcount : </strong> <?php echo $this->user_edit_count; ?></p>
+<?php if ($this->user_uploadcount>-1) ?> 
 <p><strong>Total uploadcount : </strong> <?php echo $this->user_uploadcount; ?></p>
+<?php if ($this->user_uploadsize>-1) ?> 
 <p><strong>Total size : </strong> <?php echo octets($this->user_uploadsize); ?></p>
 </fieldset>
 <?
