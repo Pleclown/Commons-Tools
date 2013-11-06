@@ -47,7 +47,7 @@ function PieChart($array, $column,$title,$div)
 
         var chart = new google.visualization.PieChart(document.getElementById(\''.$div.'\'));
         chart.draw(data, options);
-      }':
+      }';
       return $Result;
 }
 
