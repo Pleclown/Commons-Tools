@@ -10,6 +10,7 @@
 <div class='portlet' id='p-tools-others'><h5 style="-moz-border-radius-topright: 10px;">Tools</h5><div class='pBody'>
 <ul>
 <li><a href="uploadsum.php">Upload counter</a></li>
+<li><a href="useractions.php">User actions</a></li>
 <li><a href="findfiles.php">Find files in cat for user</a></li>
 </ul>
 </div></div>
