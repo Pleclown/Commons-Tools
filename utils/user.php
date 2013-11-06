@@ -4,18 +4,38 @@
 class user{
    const QUERY_USER_BY_NAME = 'select user_id, user_registration, user_editcount from user u where user_name= ?;';
    const QUERY_USER_UPLOADS_SUMMARY = 'select img_media_type as type, DATE_FORMAT(img_timestamp,"%Y-%m") as created_month, sum(img_size) as somme, count(img_name) as compte from image where img_user = ? group by img_media_type, created_month order by created_month;'
-
+   const QUERY_USER_ACTIONS = 'select log_type, count(*) as compte from logging where log_user = ? group by log_type;';
+   
    public $loaded = false;
+   public $uploadsum = false;
+   public $useractions = false;
    public $user_id = '';
    public $user_name = '';
    public $user_edit_count = '';
    public $user_registration = '';
-   private $user_uploadcount = -1;
-   private $user_uploadsize = -1;
-   private $user_moves = -1;
-   private $user_blocks = -1;
-   private $user_delete = -1;
-   private $user_uploadlog = -1;
+   private $user_uploadcount = 0;
+   private $user_uploadsize = 0;
+   
+   private $userabuses = 0;
+   private $userblocks = 0;
+   private $userdeletions = 0;
+   private $usergblblocks = 0;
+   private $usergblrights = 0;
+   private $userglobalauth = 0;
+   private $userimports = 0;
+   private $usermoves = 0;
+   private $usercreations = 0;
+   private $usertranslations = 0;
+   private $userpatrols = 0;
+   private $userprotections = 0;
+   private $userrenames = 0;
+   private $userrights = 0;
+   private $userblacklist = 0;
+   private $userthanks = 0;
+   private $userreview = 0;
+   private $useruploads = 0;
+   
+   
    private $array_total_size= array();
    private $array_total_count= array();
    private $array_month_size= array();
@@ -44,7 +64,56 @@ class user{
    } 
 
 
-
+   public function userActions()
+   {
+   	$result = $this->connection->execute(user::QUERY_USER_ACTIONS,array($this->user_id));
+	if ($result != NULL){
+	  $this->useractions = true;
+	  foreach($result as $row)
+	  {
+	    switch ($row['log_type']){
+	    	case 'abusefilter': $this->userabuses = $row['compte'];
+                              break;	    	
+	    	case 'block': $this->userblocks = $row['compte'];
+                              break;	    	
+	    	case 'delete': $this->userdeletions = $row['compte'];
+                              break;	    	
+	    	case 'gblblock': $this->usergblblocks = $row['compte'];
+                              break;	    	
+	    	case 'gblrights': $this->usergblrights = $row['compte'];
+                              break;	    	
+	    	case 'globalauth': $this->userglobalauth = $row['compte'];
+                              break;	    	
+	    	case 'import': $this->userimports = $row['compte'];
+                              break;	    	
+	    	case 'move': $this->usermoves = $row['compte'];
+                              break;	    	
+	    	case 'newusers': $this->usercreations = $row['compte'];
+                              break;	    	
+	    	case 'pagetranslation': $this->usertranslations = $row['compte'];
+                              break;	    	
+	    	case 'patrol': $this->userpatrols = $row['compte'];
+                              break;	    	
+	    	case 'protect': $this->userprotections = $row['compte'];
+                              break;	    	
+	    	case 'renameuser': $this->userrenames = $row['compte'];
+                              break;	    	
+	    	case 'rights': $this->userrights = $row['compte'];
+                              break;	    	
+	    	case 'spamblacklist': $this->userblacklist = $row['compte'];
+                              break;	    	
+	    	case 'thanks': $this->userthanks = $row['compte'];
+                              break;	    	
+	    	case 'translationreview': $this->userreview = $row['compte'];
+                              break;	    	
+	    	case 'upload': $this->useruploads = $row['compte'];
+                              break;
+	    } 
+	  }
+	
+	}
+   }
+   
    public function printUser()
    {
      
@@ -71,10 +140,33 @@ User NOT found !
 ?>
 <fieldset><legend>General informations</legend>
 <p><strong>Total editcount : </strong> <?php echo $this->user_edit_count; ?></p>
-<?php if ($this->user_uploadcount>-1) ?> 
+<?php if ($this->uploadsum) {?> 
 <p><strong>Total uploadcount : </strong> <?php echo $this->user_uploadcount; ?></p>
-<?php if ($this->user_uploadsize>-1) ?> 
 <p><strong>Total size : </strong> <?php echo octets($this->user_uploadsize); ?></p>
+<?php
+}
+?>
+<?php if ($this->useractions) {?> 
+<p><strong>Log type 'abusefilter': </strong> <?php echo $this->userabuses; ?></p>
+<p><strong>Log type 'block': </strong> <?php echo $this->userblocks; ?></p>
+<p><strong>Log type 'delete': </strong> <?php echo $this->userdeletions; ?></p>
+<p><strong>Log type 'gblblock': </strong> <?php echo $this->usergblblocks; ?></p>
+<p><strong>Log type 'gblrights': </strong> <?php echo $this->usergblrights; ?></p>
+<p><strong>Log type 'globalauth': </strong> <?php echo $this->userglobalauth; ?></p>
+<p><strong>Log type 'import': </strong> <?php echo $this->userimports; ?></p>
+<p><strong>Log type 'move': </strong> <?php echo $this->usermoves; ?></p>
+<p><strong>Log type 'newusers': </strong> <?php echo $this->usercreations; ?></p>
+<p><strong>Log type 'pagetranslation': </strong> <?php echo $this->usertranslations; ?></p>
+<p><strong>Log type 'patrol': </strong> <?php echo $this->userpatrols; ?></p>
+<p><strong>Log type 'protect': </strong> <?php echo $this->userprotections; ?></p>
+<p><strong>Log type 'renameuser': </strong> <?php echo $this->userrenames; ?></p>
+<p><strong>Log type 'rights': </strong> <?php echo $this->userrights; ?></p>
+<p><strong>Log type 'spamblacklist': </strong> <?php echo $this->userblacklist; ?></p>
+<p><strong>Log type 'thanks': </strong> <?php echo $this->userthanks; ?></p>
+<p><strong>Log type 'translationreview': </strong> <?php echo $this->userreview; ?></p>
+<p><strong>Log type 'upload': </strong> <?php echo $this->useruploads; ?></p><?php
+}
+?>
 </fieldset>
 <?
    	}
@@ -85,6 +177,7 @@ User NOT found !
 
 	$result = $this->connection->execute(user::QUERY_USER_UPLOADS_SUMMARY,array($this->user_id));
 	if ($result != NULL){
+	  $this->uploadsum = true;
 		foreach($result as $row)
 		{
 			$this->user_uploadcount += $row['compte'];
