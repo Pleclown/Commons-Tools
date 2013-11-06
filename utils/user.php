@@ -48,7 +48,7 @@ class user{
    function __construct($aConnection, $aName)
    {
      $this->connection = $aConnection;
-     load($aName);
+     $this->load($aName);
    }
 
    public function load($aName)
