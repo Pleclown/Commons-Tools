@@ -24,7 +24,6 @@ if (!empty($_GET)) {
 if ($name != '') {
 $db = new database;
 if ($db->connect('commonswiki')) {
-echo 'toto';
 $user = new user($db,$name);
 
 $user->printUser();
