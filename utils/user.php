@@ -3,7 +3,7 @@
 
 class user{
    const QUERY_USER_BY_NAME = 'select user_id, user_registration, user_editcount from user u where user_name= ?;';
-   const QUERY_USER_UPLOADS_SUMMARY = 'select img_media_type as type, DATE_FORMAT(img_timestamp,"%Y-%m") as created_month, sum(img_size) as somme, count(img_name) as compte from image where img_user = ? group by img_media_type, created_month order by created_month;'
+   const QUERY_USER_UPLOADS_SUMMARY = 'select img_media_type as type, DATE_FORMAT(img_timestamp,"%Y-%m") as created_month, sum(img_size) as somme, count(img_name) as compte from image where img_user = ? group by img_media_type, created_month order by created_month;';
    const QUERY_USER_ACTIONS = 'select log_type, count(*) as compte from logging where log_user = ? group by log_type;';
    
    public $loaded = false;
