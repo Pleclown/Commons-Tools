@@ -31,7 +31,7 @@ $user->printUser();
 $user->getUserActions();
 $user->printGeneralInfos();
 
-<?php
+
 }
 include('utils/footer.php');
 
