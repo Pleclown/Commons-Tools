@@ -30,7 +30,7 @@ $user->printUser();
 $user->getUserActions();
 $user->printGeneralInfos();
 
-
+}
 }
 include('utils/footer.php');
 
