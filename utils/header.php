@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
 <head><title><?php echo $title; ?></title><style type="text/css">
 <!--/* <![CDATA[ */
-@import "http://tools.wmflabs.org/commonsuploadsum/utils/main.css"; 
+@import "utils/main.css"; 
 @import "http://fr.wikipedia.org/w/index.php?title=MediaWiki:Monobook.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=2678400";
 @import "http://fr.wikipedia.org/w/index.php?title=MediaWiki:Common.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=2678400";
 @import "http://fr.wikipedia.org/w/index.php?title=-&action=raw&gen=css&maxage=2678400&smaxage=0&ts=20061201185052";
