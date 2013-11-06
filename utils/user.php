@@ -64,7 +64,7 @@ class user{
    } 
 
 
-   public function userActions()
+   public function getUserActions()
    {
    	$result = $this->connection->execute(user::QUERY_USER_ACTIONS,array($this->user_id));
 	if ($result != NULL){
