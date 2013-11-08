@@ -51,7 +51,7 @@ echo $list;
 ?>
 </fieldset>
 <?php
-
+}
 }
 include('utils/footer.php');
  
