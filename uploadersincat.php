@@ -37,7 +37,7 @@ $result=$db->execute(QUERY_UPLOADERS_IN_CAT,array($category));
 if ($result != NULL){
 foreach ($result as $row)
 {
-$list .= '<a href="//commons.wikimedia.org/wiki/User:'.$row['img_user_text'].'" >File:'.$row['img_user_text'].'</a><br/>';
+$list .= '<a href="//commons.wikimedia.org/wiki/User:'.$row['img_user_text'].'" >User:'.$row['img_user_text'].'</a> : '.$row['compte'].' files.<br/>';
 }
 
 }
