@@ -67,6 +67,7 @@ echo $list;
 <?php
 
 }
+}
 include('utils/footer.php');
  
 ?>
