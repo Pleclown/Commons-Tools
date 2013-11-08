@@ -18,7 +18,7 @@ $category = '';
 
 ?>
 <fieldset><legend>Find uploaders in cat</legend>
-<form method="get" action="findfiles.php" id="mw-sulinfo-form1">
+<form method="get" action="uploadersincat.php" id="mw-sulinfo-form1">
 <table border="0" id="mw-movepage-table"> 
 <tr><td class='mw-label'><label for="category">Category :</label></td><td class='mw-input'><input id="category" name="category" type="text" value="<?php echo $category; ?>"/></td>
 <tr><td>&#160;</td><td class='mw-submit'><input type="submit" value="Go !" /></td></tr>
