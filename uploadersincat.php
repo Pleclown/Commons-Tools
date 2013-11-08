@@ -29,11 +29,9 @@ $category = '';
 if ($category != '') {
 $db = new database;
 if ($db->connect('commonswiki')) {
-$user = new user($db,$name);
-$user->printUser();
 
 $category = str_replace ( ' ' , '_' , $category);
-$result=$db->execute(QUERY_UPLOADERS_IN_CAT,array($user->user_id,$category)); 
+$result=$db->execute(QUERY_UPLOADERS_IN_CAT,array($category)); 
 
 
 if ($result != NULL){
