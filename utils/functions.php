@@ -3,7 +3,7 @@ const QUERY_USER_IN_CAT ='select distinct page_title from page, image where page
 
 const QUERY_USER_NOT_IN_CAT ='select distinct page_title from page, image where page_namespace = 6 and img_name = page_title and img_user = ? and page_id not in (SELECT distinct cl_from from categorylinks where cl_to IN (?))';
 
-const QUERY_UPLOADERS_IN_CAT = 'select distinct img_user_text from image, page, categorylinks where page_namespace = 6 and img_name = page_title and page_id = cl_from and cl_to in (?);'
+const QUERY_UPLOADERS_IN_CAT = 'select distinct img_user_text from image, page, categorylinks where page_namespace = 6 and img_name = page_title and page_id = cl_from and cl_to in (?)';
 
 function octets($n){
 	$i=0;
