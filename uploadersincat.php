@@ -33,6 +33,7 @@ if ($db->connect('commonswiki')) {
 $category = str_replace ( ' ' , '_' , $category);
 $result=$db->execute(QUERY_UPLOADERS_IN_CAT,array($category)); 
 
+$list = '';
 
 if ($result != NULL){
 foreach ($result as $row)
