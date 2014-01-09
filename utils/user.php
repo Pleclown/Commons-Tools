@@ -182,7 +182,7 @@ User NOT found !
 		{
 			$this->user_uploadcount += $row['compte'];
 			$this->user_uploadsize  += $row['somme'];
-			if (array_key_exists($row['type'],$array_total_size)) {
+			if (array_key_exists($row['type'],$this->array_total_size)) {
 				$this->array_total_size[$row['type']] += $row['somme'];
 				$this->array_total_count[$row['type']] += $row['compte'];
 			}
@@ -191,7 +191,7 @@ User NOT found !
 				$this->array_total_count[$row['type']] = $row['compte'];
 			}
 
-			if (array_key_exists($row['created_month'], $array_month_size)) {
+			if (array_key_exists($row['created_month'], $this->array_month_size)) {
 				$this->array_month_size[$row['created_month']] += $row['somme'];
 				$this->array_month_count[$row['created_month']] += $row['compte'];
 			}
