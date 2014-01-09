@@ -33,7 +33,7 @@ $db = new database;
 if ($db->connect('commonswiki')) {
 
 $category = str_replace ( ' ' , '_' , $category);
-$result=$db->execute(QUERY_QUERY_FILES_IN_CAT_BY_MONTH,array($category)); 
+$result=$db->execute(QUERY_FILES_IN_CAT_BY_MONTH,array($category)); 
 
 
 if ($result != NULL){
