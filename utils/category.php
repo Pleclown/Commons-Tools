@@ -115,7 +115,7 @@ Cat NOT found !
     if ($result != NULL){
       foreach ($result as $row)
       {
-        $this->filesInCatFor= $row['page_title'];
+        $this->filesInCatFor[]= $row['page_title'];
       }
     }
   }
