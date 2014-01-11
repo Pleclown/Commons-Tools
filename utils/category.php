@@ -57,7 +57,7 @@ Cat NOT found !
     }
   }
 
-  public function getUploadersInCat
+  public function getUploadersInCat()
   {
     $this->connection->execute(QUERY_UPLOADERS_IN_CAT,array($this->catname));
 
@@ -69,7 +69,7 @@ Cat NOT found !
     }
   }
 
-  public function printUploadersInCatPieChart
+  public function printUploadersInCatPieChart()
   {
 ?>
 <fieldset><legend>PieChart</legend>
@@ -83,7 +83,7 @@ Cat NOT found !
 <?php
   }
   
-  public function printUploadersInCatList
+  public function printUploadersInCatList()
   {
 ?>
 <fieldset><legend>List</legend>
