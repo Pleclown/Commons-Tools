@@ -120,7 +120,7 @@ Cat NOT found !
     }
   }
 
-  public function printFilesInFor()
+  public function printFilesInCatFor()
   {
 ?>
 <fieldset><legend>List</legend>
