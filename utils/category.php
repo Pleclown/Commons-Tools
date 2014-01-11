@@ -92,7 +92,7 @@ Cat NOT found !
 <?php
     foreach($this->uploaders as $key => $value)
     {
-      echo '<a href="//commons.wikimedia.org/wiki/User:'.$key.'" >User:'.$row['img_user_text'].'</a> : '.$value.' files.<br/>';
+      echo '<a href="//commons.wikimedia.org/wiki/User:'.$key.'" >User:'.$key.'</a> : '.$value.' files.<br/>';
     }
 ?>
 </fieldset>
