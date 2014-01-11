@@ -80,7 +80,7 @@ Cat NOT found !
   echo PieChart($this->uploaders,'Uploaders','Number of files by uploader','chart_div_a');
 ?>
     </script>
-<div id="chart_div_a" style="float:right"></div>
+<div id="chart_div_a" style="float:left"></div>
 </fieldset>
 <?php
   }
@@ -90,7 +90,7 @@ Cat NOT found !
 ?>
 <fieldset><legend>List</legend>
 <?php
-    foreach($array as $key => $value)
+    foreach($this->uploaders as $key => $value)
     {
       echo '<a href="//commons.wikimedia.org/wiki/User:'.$key.'" >User:'.$row['img_user_text'].'</a> : '.$value.' files.<br/>';
     }
