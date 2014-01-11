@@ -14,6 +14,7 @@ const QUERY_FILES_IN_CAT_BY_MONTH = 'select DATE_FORMAT(img_timestamp,"%Y-%m") a
 
   public $loaded= false;
   public $catname;
+  public $cattitle
   public $catfiles;
   public $catpages;
   public $catsubcats;
@@ -28,7 +29,8 @@ const QUERY_FILES_IN_CAT_BY_MONTH = 'select DATE_FORMAT(img_timestamp,"%Y-%m") a
 
    public function load($aName)
    {
-       $this->catname = $aName;
+       $this->cattitle = $aName;
+       $this->catname = str_replace ( ' ' , '_' , $this->cattitle);
        $result = $this->connection->execute(category::QUERY_CAT_BY_NAME,array($this->catname));
        if ($result != NULL){
          $this->catfiles = $result[0]['cat_files'];
@@ -44,7 +46,7 @@ const QUERY_FILES_IN_CAT_BY_MONTH = 'select DATE_FORMAT(img_timestamp,"%Y-%m") a
       if ($this->loaded) {
 ?>
 <fieldset><legend>Cat</legend>
-<p><strong>Name    : </strong> <?php echo $this->catname; ?></p>
+<p><strong>Name    : </strong> <?php echo $this->cattitle; ?></p>
 <p><strong>Subcats : </strong> <?php echo $this->catsubcats; ?></p>
 <p><strong>Pages   : </strong> <?php echo $this->catpages; ?></p>
 <p><strong>Files   : </strong> <?php echo $this->catfiles; ?></p>
@@ -59,7 +61,7 @@ Cat NOT found !
 
   public function getUploadersInCat()
   {
-    $this->connection->execute(QUERY_UPLOADERS_IN_CAT,array($this->catname));
+    $this->connection->execute(category::QUERY_UPLOADERS_IN_CAT,array($this->catname));
 
     if ($result != NULL){
       foreach ($result as $row)
