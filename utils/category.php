@@ -61,7 +61,7 @@ Cat NOT found !
 
   public function getUploadersInCat()
   {
-    $this->connection->execute(category::QUERY_UPLOADERS_IN_CAT,array($this->catname));
+    $result = $this->connection->execute(category::QUERY_UPLOADERS_IN_CAT,array($this->catname));
 
     if ($result != NULL){
       foreach ($result as $row)
