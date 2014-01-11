@@ -2,7 +2,7 @@
 
 
 include('utils/functions.php');
-include('utils/user.php');
+include('utils/category.php');
 
 include('utils/database.php');
 $title = 'Uploaders in cat';
@@ -29,27 +29,12 @@ $category = '';
 if ($category != '') {
 $db = new database;
 if ($db->connect('commonswiki')) {
+$cat = new category($db,$category);
 
-$category = str_replace ( ' ' , '_' , $category);
-$result=$db->execute(QUERY_UPLOADERS_IN_CAT,array($category)); 
-
-$list = '';
-
-if ($result != NULL){
-foreach ($result as $row)
-{
-$list .= '<a href="//commons.wikimedia.org/wiki/User:'.$row['img_user_text'].'" >User:'.$row['img_user_text'].'</a> : '.$row['compte'].' files.<br/>';
-}
-
-}
-
-?>
-<fieldset><legend>List</legend>
-<?php
-echo $list;
-?>
-</fieldset>
-<?php
+$cat->printCat();
+$cat->getUploadersInCat();
+$cat->printUploadersInCatPieChart();
+$cat->printUploadersInCatList();
 }
 }
 include('utils/footer.php');
