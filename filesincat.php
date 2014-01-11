@@ -1,7 +1,7 @@
 <?php
 
-
 include('utils/functions.php');
+include('utils/category.php');
 
 include('utils/database.php');
 $title = 'Files in cat';
@@ -32,26 +32,9 @@ if ($category != '') {
 $db = new database;
 if ($db->connect('commonswiki')) {
 
-$category = str_replace ( ' ' , '_' , $category);
-$result=$db->execute(QUERY_FILES_IN_CAT_BY_MONTH,array($category)); 
-
-
-if ($result != NULL){
-foreach ($result as $row)
-{
-$list .= 'Mois '.$row['created_month'].' :'.$row['compte'].' images<br/>';
-}
-
-}
-
-?>
-<fieldset><legend>Result</legend>
-<?php
-echo $list;
-?>
-</fieldset>
-<?php
-
+$cat = new category($db,$category);
+$cat->getFilesInCatByMonth();
+$cat->printFilesInCatByMonth();
 }
 }
 include('utils/footer.php');
