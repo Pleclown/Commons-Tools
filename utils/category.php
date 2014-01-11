@@ -19,8 +19,10 @@ const QUERY_FILES_IN_CAT_BY_MONTH = 'select DATE_FORMAT(img_timestamp,"%Y-%m") a
   public $catpages;
   public $catsubcats;
   public $uploaders;
+  public $uploadersCounter;
   public $filesInCatFor;
   public $filesIncatForCounter;
+  public $filesInCatByMonth;
   private $connection;
    
   function __construct($aConnection, $aName)
@@ -66,9 +68,11 @@ Cat NOT found !
     $result = $this->connection->execute(category::QUERY_UPLOADERS_IN_CAT,array($this->catname));
 
     if ($result != NULL){
+      $this->uploadersCounter = 0;
       foreach ($result as $row)
       {
         $this->uploaders[$row['img_user_text']]= $row['compte'];
+        $this->uploadersCounter++;
       }
     }
   }
@@ -82,7 +86,8 @@ Cat NOT found !
   echo PieChart($this->uploaders,'Uploaders','Number of files by uploader','chart_div_a');
 ?>
     </script>
-<div id="chart_div_a" style="float:left"></div>
+<div id="chart_div_a" style="float:right"></div>
+<p><strong>Total : </strong><?php echo $this->uploadersCounter; ?> uploaders.<p>
 </fieldset>
 <?php
   }
@@ -139,6 +144,33 @@ Cat NOT found !
    
   }
 
+  public function getFilesInCatByMonth()
+  {
+    $result=$this->connection->execute(category::QUERY_FILES_IN_CAT_BY_MONTH,array($this->catname));
+    if ($result != NULL){
+      foreach ($result as $row)
+      {
+        $this->filesInCatByMonth[$row['created_month']]= $row['compte'];
+      }
+    }
+    
+  }
+
+  public function printFilesInCatByMonth()
+  {
+?>
+<fieldset><legend>By month</legend>
+        
+        <script type="text/javascript">
+<?php
+  echo MonthBarGraph($this->filesInCatByMonth,'Count','Upload count by month','bar_div_b');
+?>
+    </script>
+<div id="bar_div_b" style="float:right"></div>
+<p><strong>Total : </strong><?php echo $this->catfiles; ?> files.<p>
+</fieldset>
+<?php
+  }
 
 
 
