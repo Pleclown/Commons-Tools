@@ -54,29 +54,49 @@ const QUERY_FILES_IN_CAT_BY_MONTH = 'select DATE_FORMAT(img_timestamp,"%Y-%m") a
        echo '<fieldset><legend>Cat</legend>
 Cat NOT found !
 </fieldset>';
-     }
-   }
+    }
+  }
 
-   public function uploadersInCat
-   {
-      $this->connection->execute(QUERY_UPLOADERS_IN_CAT,array($this->catname));
+  public function getUploadersInCat
+  {
+    $this->connection->execute(QUERY_UPLOADERS_IN_CAT,array($this->catname));
 
-      if ($result != NULL){
-        foreach ($result as $row)
-        {
-          $this->uploaders[$row['img_user_text']]= $row['compte'];
-        }
-
+    if ($result != NULL){
+      foreach ($result as $row)
+      {
+        $this->uploaders[$row['img_user_text']]= $row['compte'];
       }
-   }
+    }
+  }
 
+  public function printUploadersInCatPieChart
+  {
+?>
+<fieldset><legend>PieChart</legend>
+        <script type="text/javascript">
+<?php
+  echo PieChart($this->uploaders,'Uploaders','Number of files by uploader','chart_div_a');
+?>
+    </script>
+<div id="chart_div_a" style="float:right"></div>
+</fieldset>
+<?php
+  }
+  
+  public function printUploadersInCatList
+  {
 ?>
 <fieldset><legend>List</legend>
 <?php
-echo $list;
+    foreach($array as $key => $value)
+    {
+      echo '<a href="//commons.wikimedia.org/wiki/User:'.$key.'" >User:'.$row['img_user_text'].'</a> : '.$value.' files.<br/>';
+    }
 ?>
 </fieldset>
 <?php
-}     
+  }
+  
+
    }
 ?>
