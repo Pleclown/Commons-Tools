@@ -33,6 +33,7 @@ $db = new database;
 if ($db->connect('commonswiki')) {
 
 $cat = new category($db,$category);
+$cat->printCat;
 $cat->getFilesInCatByMonth();
 $cat->printFilesInCatByMonth();
 }
