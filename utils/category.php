@@ -20,6 +20,7 @@ const QUERY_FILES_IN_CAT_BY_MONTH = 'select DATE_FORMAT(img_timestamp,"%Y-%m") a
   public $catsubcats;
   public $uploaders;
   public $filesInCatFor;
+  public $filesIncatForCounter;
   private $connection;
    
   function __construct($aConnection, $aName)
@@ -113,9 +114,11 @@ Cat NOT found !
     }
     
     if ($result != NULL){
+      $this->filesInCatForCounter = 0;
       foreach ($result as $row)
       {
         $this->filesInCatFor[]= $row['page_title'];
+        $this->filesInCatForCounter++;
       }
     }
   }
@@ -125,6 +128,7 @@ Cat NOT found !
 ?>
 <fieldset><legend>List</legend>
 <?php
+    echo '<strong>'.$this->filesIncatCounter.' files for the user in cat.</strong>';
     foreach ($this->filesInCatFor as $key => $value)
     {
       echo '<a href="//commons.wikimedia.org/wiki/File:'.$value.'" >File:'.$value.'</a><br/>';
