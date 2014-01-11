@@ -3,6 +3,7 @@
 
 include('utils/functions.php');
 include('utils/user.php');
+include('utils/category.php');
 
 include('utils/database.php');
 $title = 'Find files in cat';
@@ -39,32 +40,11 @@ if ($db->connect('commonswiki')) {
 $user = new user($db,$name);
 $user->printUser();
 
-$category = str_replace ( ' ' , '_' , $category);
-if ($reverse=='true')
-{
-  $result=$db->execute(QUERY_USER_NOT_IN_CAT,array($user->user_id,$category)); 
-}
-else
-{
-  $result=$db->execute(QUERY_USER_IN_CAT,array($user->user_id,$category)); 
-}
+$cat = new category($db,$category);
+$cat->printCat();
 
-
-if ($result != NULL){
-foreach ($result as $row)
-{
-$list .= '<a href="//commons.wikimedia.org/wiki/File:'.$row['page_title'].'" >File:'.$row['page_title'].'</a><br/>';
-}
-
-}
-
-?>
-<fieldset><legend>List</legend>
-<?php
-echo $list;
-?>
-</fieldset>
-<?php
+$cat->getFilesInCatFor($user->user_id);
+$cat->printFilesInCatFor();
 
 }
 }
