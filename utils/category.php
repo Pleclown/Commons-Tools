@@ -29,7 +29,7 @@ const QUERY_FILES_IN_CAT_BY_MONTH = 'select DATE_FORMAT(img_timestamp,"%Y-%m") a
    public function load($aName)
    {
        $this->catname = $aName;
-       $result = $this->connection->execute(user::QUERY_CAT_BY_NAME,array($this->catname));
+       $result = $this->connection->execute(category::QUERY_CAT_BY_NAME,array($this->catname));
        if ($result != NULL){
          $this->catfiles = $result[0]['cat_files'];
          $this->catpages = $result[0]['cat_pages'];
