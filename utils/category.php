@@ -19,6 +19,7 @@ const QUERY_FILES_IN_CAT_BY_MONTH = 'select DATE_FORMAT(img_timestamp,"%Y-%m") a
   public $catpages;
   public $catsubcats;
   public $uploaders;
+  public $filesInCatFor;
   private $connection;
    
   function __construct($aConnection, $aName)
@@ -99,6 +100,53 @@ Cat NOT found !
 <?php
   }
   
+
+  public function getFilesInCatFor($aUser,$aReverse)
+  {
+    if ($aReverse=='true')
+    {
+      $result=$this->connection->execute(category::QUERY_USER_NOT_IN_CAT,array($aUser,$this->catname)); 
+    }
+    else
+    {
+      $result=$this->connection->execute(category::QUERY_USER_IN_CAT,array($aUser,$this->catname)); 
+    }
+    
+    if ($result != NULL){
+      foreach ($result as $row)
+      {
+        $this->filesInCatFor= $row['page_title'];
+      }
+    }
+  }
+
+  public function printFilesInFor()
+  {
+?>
+<fieldset><legend>List</legend>
+<?php
+    foreach ($this->filesInCatFor as $key => $value)
+    {
+      echo '<a href="//commons.wikimedia.org/wiki/File:'.$value.'" >File:'.$value.'</a><br/>';
+    }
+?>
+</fieldset>
+<?php
+   
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
    }
 ?>
