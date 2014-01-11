@@ -128,7 +128,7 @@ Cat NOT found !
 ?>
 <fieldset><legend>List</legend>
 <?php
-    echo '<strong>'.$this->filesIncatCounter.' files for the user in cat.</strong>';
+    echo '<strong>'.$this->filesInCatForCounter.' files for the user in cat.</strong><br>';
     foreach ($this->filesInCatFor as $key => $value)
     {
       echo '<a href="//commons.wikimedia.org/wiki/File:'.$value.'" >File:'.$value.'</a><br/>';
