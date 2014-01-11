@@ -14,7 +14,7 @@ const QUERY_FILES_IN_CAT_BY_MONTH = 'select DATE_FORMAT(img_timestamp,"%Y-%m") a
 
   public $loaded= false;
   public $catname;
-  public $cattitle
+  public $cattitle;
   public $catfiles;
   public $catpages;
   public $catsubcats;
