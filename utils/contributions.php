@@ -50,7 +50,7 @@ class contributions{
           $color='green';
         else
           $color='red';
-        echo ' <li style="color: '.$color.';">'.echoContrib($value[0],$value[1],$value[2],$value[3],$value[4]).'</li>';
+        echo ' <li style="color: '.$color.';">'.$this->echoContrib($value[0],$value[1],$value[2],$value[3],$value[4]).'</li>';
       }
       echo '</ul>';
     }else
