@@ -26,15 +26,21 @@ class contributions{
       {
         $this->contributions[$row['rev_id']]= array($row['rev_user_text'],$row['page_title'],$row['rev_timestamp']);
       }
+      $this->loaded = true;
     }
 
   }
   
   public function printIntertwinedContribs()
   {
-    foreach($this->contributions as $value)
+    if ($this->loaded){
+      foreach($this->contributions as $key => $value)
+      {
+        echo ' User:'.$value[0].' Page : '.$value[1].' Timestamp :'.$value[2].'<br/>';
+      }
+    }else
     {
-      echo ' User:'.$value[0].' Page : '.$value[1].' Timestamp :'.$value[2].'<br/>';
+      echo 'Not loaded...';
     }
   
   }
