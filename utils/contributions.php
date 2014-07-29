@@ -1,4 +1,5 @@
 <?php
+include_once('functions.php');
 
 class contributions{
 
@@ -34,7 +35,7 @@ class contributions{
   private function formatContrib($user,$page_title,$timestamp,$oldid,$comment)
   {
     $page_title_clean = str_replace ( '_' , ' ' , $page_title);
-    return '<a href="//fr.wikipedia.org/w/index.php?title='.$page_title.'&oldid='.$oldid.'" title="'.$page_title_clean.'">'.date('d F Y à H:i:s',$timestamp).'</a> (<a href="//fr.wikipedia.org/w/index.php?title='.$page_title.'&diff=prev&oldid='.$oldid.'" title="'.$page_title_clean.'">diff</a> | <a href="//fr.wikipedia.org/w/index.php?title='.$page_title.'&action=history" title="'.$page_title_clean.'">hist</a>) <span>. .</span> <span><a href="//fr.wikipedia.org/wiki/User:'.$user.'">'.$user.'</a></span><span >. .</span>  <a href="//fr.wikipedia.org/wiki/'.$page_title.'" title="'.$page_title_clean.'" class="mw-contributions-title">'.$page_title_clean.'</a> ‎ <span class="comment">('.$comment.')</span>';
+    return '<a href="//fr.wikipedia.org/w/index.php?title='.$page_title.'&oldid='.$oldid.'" title="'.$page_title_clean.'">'.formatMWTimestamp($timestamp).'</a> (<a href="//fr.wikipedia.org/w/index.php?title='.$page_title.'&diff=prev&oldid='.$oldid.'" title="'.$page_title_clean.'">diff</a> | <a href="//fr.wikipedia.org/w/index.php?title='.$page_title.'&action=history" title="'.$page_title_clean.'">hist</a>) <span>. .</span> <span><a href="//fr.wikipedia.org/wiki/User:'.$user.'">'.$user.'</a></span><span >. .</span>  <a href="//fr.wikipedia.org/wiki/'.$page_title.'" title="'.$page_title_clean.'" class="mw-contributions-title">'.$page_title_clean.'</a> ‎ <span class="comment">('.$comment.')</span>';
   }
   
   public function printIntertwinedContribs()
