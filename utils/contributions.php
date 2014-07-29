@@ -31,6 +31,12 @@ class contributions{
 
   }
   
+  private function echoContrib($user,$page_title,$timestamp,$oldid,$comment)
+  {
+    $page_title_clean = str_replace ( '_' , ' ' , $page_title);
+    echo '<a href="//fr.wikipedia.org/w/index.php?title='.$page_title.'&oldid='.$oldid.'" title="'.$page_title_clean.'">'.date('d F Y à H:i:s',$timestamp).'</a> (<a href="//fr.wikipedia.org/w/index.php?title='.$page_title.'&diff=prev&oldid='.$oldid.'" title="'.$page_title_clean.'">diff</a> | <a href="//fr.wikipedia.org/w/index.php?title='.$page_title.'&action=history" title="'.$page_title_clean.'">hist</a>) <span>. .</span> <span><a href="//fr.wikipedia.org/wiki/User:'.$user.'">'.$user.'</a></span><span >. .</span>  <a href="//fr.wikipedia.org/wiki/'.$page_title.'" title="'.$page_title_clean.'" class="mw-contributions-title">'.$page_title_clean.'</a> ‎ <span class="comment">('.$comment.')</span>';
+  }
+  
   public function printIntertwinedContribs()
   {
 ?>
@@ -44,7 +50,7 @@ class contributions{
           $color='green';
         else
           $color='red';
-        echo ' <li style="color: '.$color.';"><a href="//fr.wikipedia.org/wiki/'.$value[1].'&oldid='.$value[3].'">'.date('d F Y /à H:i:s',$value[2]).'</a>   <a href="//fr.wikipedia.org/wiki/User:'.$value[0].'">'.$value[0].'</a> Page : '.$value[1].' Timestamp :'.$value[2].'</li>';
+        echo ' <li style="color: '.$color.';">'.echoContrib($value[0],$value[1],$value[2],$value[3],$value[4]).'</li>';
       }
       echo '</ul>';
     }else
