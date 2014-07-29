@@ -32,9 +32,9 @@ class contributions{
   
   public function printIntertwinedContribs()
   {
-    foreach($this->contributions as $key=>$value)
+    foreach($this->contributions as $value)
     {
-      echo $key.' User:'.$value[0].' Page : '.$value[1].' Timestamp :'.$value[2].'<br/>';
+      echo ' User:'.$value[0].' Page : '.$value[1].' Timestamp :'.$value[2].'<br/>';
     }
   
   }
