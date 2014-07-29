@@ -20,7 +20,7 @@ $user2='';
 
 ?>
 <fieldset><legend>Intertwined contributions</legend>
-<form method="get" action="uploadersincat.php" id="mw-sulinfo-form1">
+<form method="get" action="intertwined.php" id="mw-sulinfo-form1">
 <table border="0" id="mw-movepage-table"> 
 <tr><td class='mw-label'><label for="user1">User 1 :</label></td><td class='mw-input'><input id="user1" name="user1" type="text" value="<?php echo $user1; ?>"/></td>
 <tr><td class='mw-label'><label for="user2">User 2 :</label></td><td class='mw-input'><input id="user2" name="user2" type="text" value="<?php echo $user2; ?>"/></td>
