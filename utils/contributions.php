@@ -2,7 +2,7 @@
 
 class contributions{
 
-  const QUERY_INTERTWINED_CONTRIBS = 'select rev_id, rev_user_text,page_title, rev_timestamp FROM revision_userindex, page WHERE (rev_user_text = ? or rev_user_text = ?) AND page_id=rev_page order by rev_id desc limit 1000';
+  const QUERY_INTERTWINED_CONTRIBS = 'select rev_id, rev_user_text, page_title, rev_timestamp, rev_comment FROM revision_userindex, page WHERE (rev_user_text = ? or rev_user_text = ?) AND page_id=rev_page order by rev_id desc limit 1000';
 
   public $loaded= false;
   public $user;
@@ -24,7 +24,7 @@ class contributions{
     if ($result != NULL){
       foreach ($result as $row)
       {
-        $this->contributions[$row['rev_id']]= array($row['rev_user_text'],$row['page_title'],$row['rev_timestamp']);
+        $this->contributions[$row['rev_id']]= array($row['rev_user_text'],$row['page_title'],$row['rev_timestamp'],$row['rev_id'],$row['rev_comment']);
       }
       $this->loaded = true;
     }
@@ -44,7 +44,7 @@ class contributions{
           $color='green';
         else
           $color='red';
-        echo ' <li style="color: '.$color.';"><a href="//fr.wikipedia.org/wiki/User:'.$value[0].'">'.$value[0].'</a> Page : '.$value[1].' Timestamp :'.$value[2].'</li>';
+        echo ' <li style="color: '.$color.';"><a href="//fr.wikipedia.org/wiki/'.$value[1].'&oldid='.$value[3].'">'.Date(d F Y /à H:i:s).'</a>   <a href="//fr.wikipedia.org/wiki/User:'.$value[0].'">'.$value[0].'</a> Page : '.$value[1].' Timestamp :'.$value[2].'</li>';
       }
       echo '</ul>';
     }else
