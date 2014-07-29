@@ -6,7 +6,7 @@ public $connected = false;
     //$ts_pw = posix_getpwuid(posix_getuid());
     $ts_mycnf = parse_ini_file("../replica.my.cnf");
     try {
-      $this->connection = new PDO('mysql:host=commonswiki.labsdb;dbname=commonswiki_p', $ts_mycnf['user'], $ts_mycnf['password']);
+      $this->connection = new PDO('mysql:host='.$db.'.labsdb;dbname='.$db.'_p', $ts_mycnf['user'], $ts_mycnf['password']);
       $this->connected = true;
     
     } catch (PDOException $e) {
