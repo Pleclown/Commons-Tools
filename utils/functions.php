@@ -79,7 +79,11 @@ function MonthBarGraph($array, $column,$title,$div)
 
 //phpinfo();
 
-
+function formatMWTimestamp($timestamp)
+{
+	$date = DateTime::createFromFormat('YmdHis',$timestamp);
+	return date('d F Y à H:i:s',$date->getTimestamp());
+}
 
 
 ?>
