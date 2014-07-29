@@ -2,7 +2,7 @@
 
 class contributions{
 
-  const QUERY_INTERTWINED_CONTRIBS = 'select rev_id, rev_user_text,page_title, rev_timestamp FROM revision, page WHERE (rev_user_text = ? or rev_user_text = ?) AND page_id=rev_page order by rev_id desc limit 1000';
+  const QUERY_INTERTWINED_CONTRIBS = 'select rev_id, rev_user_text,page_title, rev_timestamp FROM revision_userindex, page WHERE (rev_user_text = ? or rev_user_text = ?) AND page_id=rev_page order by rev_id desc limit 1000';
 
   public $loaded= false;
   public $user;
