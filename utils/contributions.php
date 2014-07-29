@@ -44,7 +44,7 @@ class contributions{
           $color='green';
         else
           $color='red';
-        echo ' <li style="color: '.$color.';"><a href="//fr.wikipedia.org/wiki/'.$value[1].'&oldid='.$value[3].'">'.date(d F Y /à H:i:s).'</a>   <a href="//fr.wikipedia.org/wiki/User:'.$value[0].'">'.$value[0].'</a> Page : '.$value[1].' Timestamp :'.$value[2].'</li>';
+        echo ' <li style="color: '.$color.';"><a href="//fr.wikipedia.org/wiki/'.$value[1].'&oldid='.$value[3].'">'.date('d F Y /à H:i:s',$value[2]).'</a>   <a href="//fr.wikipedia.org/wiki/User:'.$value[0].'">'.$value[0].'</a> Page : '.$value[1].' Timestamp :'.$value[2].'</li>';
       }
       echo '</ul>';
     }else
