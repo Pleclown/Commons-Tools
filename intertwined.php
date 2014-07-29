@@ -29,7 +29,7 @@ $user2='';
 </form></fieldset>
 <?php
 
-if (($user1 != '') {
+if ($user1 != '') {
 $db = new database;
 if ($db->connect('frwiki')) {
 $contribs = new contributions($db,$user1);
