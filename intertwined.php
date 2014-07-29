@@ -19,7 +19,7 @@ $user2='';
 
 
 ?>
-<fieldset><legend>Intertwined contributions</legend>
+<fieldset><legend>Users</legend>
 <form method="get" action="intertwined.php" id="mw-sulinfo-form1">
 <table border="0" id="mw-movepage-table"> 
 <tr><td class='mw-label'><label for="user1">User 1 :</label></td><td class='mw-input'><input id="user1" name="user1" type="text" value="<?php echo $user1; ?>"/></td>
