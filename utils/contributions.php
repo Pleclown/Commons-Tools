@@ -40,7 +40,7 @@ class contributions{
       echo '<ul>';
       foreach($this->contributions as $key => $value)
       {
-        if ($value[0]=$this->user)
+        if ($value[0]==$this->user)
           $color='green';
         else
           $color='red';
