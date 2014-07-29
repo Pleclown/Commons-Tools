@@ -82,7 +82,7 @@ function MonthBarGraph($array, $column,$title,$div)
 function formatMWTimestamp($timestamp)
 {
 	$date = DateTime::createFromFormat('YmdHis',$timestamp);
-	return date('d F Y /a/t H:i:s',$date->getTimestamp());
+	return date('d F Y \a\t H:i:s',$date->getTimestamp());
 }
 
 
