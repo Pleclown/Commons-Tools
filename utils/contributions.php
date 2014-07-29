@@ -33,16 +33,27 @@ class contributions{
   
   public function printIntertwinedContribs()
   {
+?>
+<fieldset><legend>List</legend>
+<?php
     if ($this->loaded){
+      echo '<ul>';
       foreach($this->contributions as $key => $value)
       {
-        echo ' User:'.$value[0].' Page : '.$value[1].' Timestamp :'.$value[2].'<br/>';
+        if ($value[0]=$this->user)
+          $color='green';
+        else
+          $color='red';
+        echo ' <li style="color: '.$color.';"><a href="//fr.wikipedia.org/wiki/User:'.$value[0].'</a> Page : '.$value[1].' Timestamp :'.$value[2].'</li>';
       }
+      echo '</ul>';
     }else
     {
       echo 'Not loaded...';
     }
-  
+?>
+</fieldset>
+<?php  
   }
 
 }
