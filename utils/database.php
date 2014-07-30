@@ -82,8 +82,7 @@ class metadatabase extends database
         foreach ($result as $row)
         {
           $this->wikilist[$row['dbname']]= $row['url'];
-        echo $row['dbname'];
-          
+
         }
   
       }
