@@ -59,7 +59,7 @@ class metadatabase extends database
   function __construct()
   {
     $this->connect('meta');
-    $result = $this->execute('SELECT dbname, url FROM wiki ORDER BY url;', array())
+    $result = $this->execute('SELECT dbname, url FROM wiki ORDER BY url;', array());
     if ($result != NULL)
     {
       foreach ($result as $row)
