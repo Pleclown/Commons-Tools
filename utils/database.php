@@ -6,7 +6,7 @@ public $connected = false;
     //$ts_pw = posix_getpwuid(posix_getuid());
     $ts_mycnf = parse_ini_file("../replica.my.cnf");
     try {
-      if ($dbname = 'meta')
+      if ($dbname == 'meta')
       {
         $db = 'enwiki';
       }
