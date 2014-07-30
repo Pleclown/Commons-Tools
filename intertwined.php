@@ -42,7 +42,7 @@ This tool diplays the last 1000 cumulated contributions of the two users. If you
 if ($user1 != '') {
 $db = new database;
 if ($db->connect($project)) {
-$contribs = new contributions($db,$user1);
+$contribs = new contributions($db,$project,$user1,$metadb);
 
 $contribs->getIntertwinedContribs($user2);
 $contribs->printIntertwinedContribs();
