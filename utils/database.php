@@ -87,5 +87,5 @@ class metadatabase extends database
   
   
 }
-}
+
 ?>
