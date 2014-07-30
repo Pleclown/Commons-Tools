@@ -102,7 +102,7 @@ class metadatabase extends database
     {
         $visiblename = preg_replace('#https?://#', '', $value);
         $selected = ($aSelectedWiki == $key ? ' selected' : '');
-        $result = $result.'<option value="$key"$selected >$visiblename</option>\n';
+        $result = $result.'<option value="'.$key.'"'.$selected.' >'.$visiblename.'</option>\n';
     }
     return $result;
   }
