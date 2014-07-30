@@ -85,5 +85,28 @@ function formatMWTimestamp($timestamp)
 	return date('d F Y \a\t H:i:s',$date->getTimestamp());
 }
 
-
+/* 	Coprid from Pietrodn
+	Gets the namespaces via MediaWiki API.
+	$wikiHost: wiki domain (e.g. "en.wikipedia.org")
+	Returns: associative array of namespaces (id => name).
+*/
+function getNamespacesAPI($wikiHost)
+{
+	$conn = curl_init('https://' . $wikiHost .
+		'/w/api.php?action=query&meta=siteinfo&siprop=namespaces&format=php');
+	curl_setopt ($conn, CURLOPT_USERAGENT, "BimBot/1.0");
+	curl_setopt($conn, CURLOPT_RETURNTRANSFER, True);
+	$ser = curl_exec($conn);
+	curl_close($conn);
+	
+	$unser = unserialize($ser);
+	$namespaces = $unser['query']['namespaces'];
+	
+	$ns = array();
+	foreach($namespaces as $i => $val) {
+		$ns[$i] = $val['*'];
+	}
+		
+	return $ns;
+}
 ?>
