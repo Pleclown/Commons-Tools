@@ -29,7 +29,7 @@ This tool diplays the last 1000 cumulated contributions of the two users. If you
 <table border="0" id="mw-movepage-table">
 <tr><td class='mw-label'><label for="wiki">Project </label></td><td class='mw-input'><select class="form-control" name="project" id="wikiDb" required>
 					<?php
-						$metadb->listSelectWiki($project);
+					       echo $metadb->listSelectWiki($project);
 					?>
 					</select></td></tr>
 <tr><td class='mw-label'><label for="user1">User 1 :</label></td><td class='mw-input'><input id="user1" name="user1" type="text" value="<?php echo $user1; ?>"/></td>
