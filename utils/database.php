@@ -51,4 +51,41 @@ public $connected = false;
     }   
   }
 }
+
+class metadatabase extends database
+{
+  public $wikilist;
+  public $loaded = true;
+  function __construct()
+  {
+    $this->connect('meta');
+    $result = $this->execute('SELECT dbname, url FROM wiki ORDER BY url;', array())
+    if ($result != NULL)
+    {
+      foreach ($result as $row)
+      {
+        $this->wikilist[$row['dbname']]= $row['url'];
+      }
+    }
+    else
+    {
+      $this->loaded = false;
+    }
+  }
+  
+  function listSelectWiki($aSelectedWiki)
+  {
+    $result = '';
+    foreach($this->wikilist as $key=>$value)
+    {
+        $visiblename = preg_replace('#https?://#', '', $value);
+        $selected = ($aSelectedWiki == $key ? ' selected' : '');
+        $result = $result.'<option value="$key"$selected >$visiblename</option>\n';
+    }
+    return $result;
+  }
+  
+  
+}
+}
 ?>
