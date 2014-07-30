@@ -15,6 +15,12 @@ public $connected = false;
     return $this->connected;
   }
 
+  public function execute($query){
+    $stmt = $this->connection->query($query);
+    return $stmt->fetchAll();
+  }
+
+
   public function execute($query,$params){
     $stmt = $this->connection->prepare($query);    
     $stmt->execute($params);
@@ -59,7 +65,7 @@ class metadatabase extends database
   function __construct()
   {
     $this->connect('meta');
-    $result = $this->execute('SELECT dbname, url FROM wiki ORDER BY url;', array());
+    $result = $this->execute('SELECT dbname, url FROM wiki ORDER BY url;');
     if ($result != NULL)
     {
       foreach ($result as $row)
