@@ -55,6 +55,7 @@ class contributions{
 <?php
     if ($this->loaded){
       $this->namespaces = getNamespacesAPI($this->meta->wikilist[$project]);
+      print_dump($this->namespaces);
       echo '<ul>';
       foreach($this->contributions as $key => $value)
       {
