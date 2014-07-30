@@ -84,11 +84,13 @@ class metadatabase extends database
           $this->wikilist[$row['dbname']]= $row['url'];
         }
       }
+      $this->coonection = null;
     }
     else
     {
       echo 'raté';
     }
+    
   }
   
   function listSelectWiki($aSelectedWiki)
