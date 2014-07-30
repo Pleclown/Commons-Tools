@@ -62,7 +62,7 @@ class contributions{
           $color='#C6FFB3';
         else
           $color='#FFCCCC';
-        echo ' <li style="background-color: '.$color.' !important;">'.$this->formatContrib($value[0],$value[1],$value[2],$value[3],$value[4].$value[5]).'</li>';
+        echo ' <li style="background-color: '.$color.' !important;">'.$this->formatContrib($value[0],$value[1],$value[2],$value[3],$value[4],$value[5]).'</li>';
       }
       echo '</ul>';
     }else
