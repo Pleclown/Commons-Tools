@@ -61,21 +61,25 @@ public $connected = false;
 class metadatabase extends database
 {
   public $wikilist;
-  public $loaded = true;
+  public $loaded = false;
   function __construct()
   {
     $this->connect('meta');
-    $result = $this->query('SELECT dbname, url FROM wiki ORDER BY url;');
-    if ($result != NULL)
+    if ($this->connected)
     {
-      foreach ($result as $row)
+      $result = $this->query('SELECT dbname, url FROM wiki ORDER BY url;');
+      if ($result != NULL)
       {
-        $this->wikilist[$row['dbname']]= $row['url'];
+        $this->loaded = true;
+        foreach ($result as $row)
+        {
+          $this->wikilist[$row['dbname']]= $row['url'];
+        }
       }
     }
     else
     {
-      $this->loaded = false;
+      echo 'raté';
     }
   }
   
