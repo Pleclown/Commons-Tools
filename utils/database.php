@@ -2,11 +2,19 @@
 class database{
 public $connection;
 public $connected = false;
-  public function connect($db){
+  public function connect($dbname){
     //$ts_pw = posix_getpwuid(posix_getuid());
     $ts_mycnf = parse_ini_file("../replica.my.cnf");
     try {
-      $this->connection = new PDO('mysql:host='.$db.'.labsdb;dbname='.$db.'_p', $ts_mycnf['user'], $ts_mycnf['password']);
+      if ($dbname = 'meta')
+      {
+        $db = 'enwiki';
+      }
+      else
+      {
+        $db = $dbname;
+      }
+      $this->connection = new PDO('mysql:host='.$db.'.labsdb;dbname='.$dbname.'_p', $ts_mycnf['user'], $ts_mycnf['password']);
       $this->connected = true;
     
     } catch (PDOException $e) {
