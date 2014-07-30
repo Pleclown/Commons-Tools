@@ -13,6 +13,7 @@ class contributions{
   private $project;
   private $meta;
   private $namespaces;
+  private $wikiHost;
 
   function __construct($aConnection, $aProject, $aName, $aMeta)
   {
@@ -45,7 +46,7 @@ class contributions{
 					: $page_title);
     
     $page_title_clean = str_replace ( '_' , ' ' , $page_title);
-    return '<a href="//fr.wikipedia.org/w/index.php?title='.$page_title.'&oldid='.$oldid.'" title="'.$page_title_clean.'">'.formatMWTimestamp($timestamp).'</a> (<a href="//fr.wikipedia.org/w/index.php?title='.$page_title.'&diff=prev&oldid='.$oldid.'" title="'.$page_title_clean.'">diff</a> | <a href="//fr.wikipedia.org/w/index.php?title='.$page_title.'&action=history" title="'.$page_title_clean.'">hist</a>) <span class="mw-changeslist-separator">. .</span> <span dir=ltr>(<a href="//fr.wikipedia.org/wiki/User:'.$user.'">'.$user.'</a>)</span> <span class="mw-changeslist-separator">. .</span> <a href="//fr.wikipedia.org/wiki/'.$page_title.'" title="'.$page_title_clean.'" class="mw-contributions-title">'.$page_title_clean.'</a> ‎ <span class="comment">('.htmlentities($comment,ENT_QUOTES,"UTF-8").')</span>';
+    return '<a href="//'.$this->wikiHost.'/w/index.php?title='.$page_title.'&oldid='.$oldid.'" title="'.$page_title_clean.'">'.formatMWTimestamp($timestamp).'</a> (<a href="//'.$this->wikiHost.'/w/index.php?title='.$page_title.'&diff=prev&oldid='.$oldid.'" title="'.$page_title_clean.'">diff</a> | <a href="//'.$this->wikiHost.'/w/index.php?title='.$page_title.'&action=history" title="'.$page_title_clean.'">hist</a>) <span class="mw-changeslist-separator">. .</span> <span dir=ltr>(<a href="//'.$this->wikiHost.'/wiki/User:'.$user.'">'.$user.'</a>)</span> <span class="mw-changeslist-separator">. .</span> <a href="//'.$this->wikiHost.'/wiki/'.$page_title.'" title="'.$page_title_clean.'" class="mw-contributions-title">'.$page_title_clean.'</a> ‎ <span class="comment">('.htmlentities($comment,ENT_QUOTES,"UTF-8").')</span>';
   }
   
   public function printIntertwinedContribs()
@@ -54,8 +55,9 @@ class contributions{
 <fieldset><legend>List</legend>
 <?php
     if ($this->loaded){
-      $this->namespaces = getNamespacesAPI($this->meta->wikilist[$project]);
-      print_dump($this->namespaces);
+      $this->wikiHost = $this->meta->wikilist[$this->project];
+      $this->namespaces = getNamespacesAPI($this->wikiHost);
+      
       echo '<ul>';
       foreach($this->contributions as $key => $value)
       {
