@@ -35,7 +35,7 @@ class contributions{
   private function formatContrib($user,$page_title,$timestamp,$oldid,$comment)
   {
     $page_title_clean = str_replace ( '_' , ' ' , $page_title);
-    return '<a href="//fr.wikipedia.org/w/index.php?title='.$page_title.'&oldid='.$oldid.'" title="'.$page_title_clean.'">'.formatMWTimestamp($timestamp).'</a> (<a href="//fr.wikipedia.org/w/index.php?title='.$page_title.'&diff=prev&oldid='.$oldid.'" title="'.$page_title_clean.'">diff</a> | <a href="//fr.wikipedia.org/w/index.php?title='.$page_title.'&action=history" title="'.$page_title_clean.'">hist</a>) <span>. .</span> <span><a href="//fr.wikipedia.org/wiki/User:'.$user.'">'.$user.'</a></span><span >. .</span>  <a href="//fr.wikipedia.org/wiki/'.$page_title.'" title="'.$page_title_clean.'" class="mw-contributions-title">'.$page_title_clean.'</a> ‎ <span class="comment">('.htmlentities($comment,ENT_QUOTES).')</span>';
+    return '<a href="//fr.wikipedia.org/w/index.php?title='.$page_title.'&oldid='.$oldid.'" title="'.$page_title_clean.'">'.formatMWTimestamp($timestamp).'</a> (<a href="//fr.wikipedia.org/w/index.php?title='.$page_title.'&diff=prev&oldid='.$oldid.'" title="'.$page_title_clean.'">diff</a> | <a href="//fr.wikipedia.org/w/index.php?title='.$page_title.'&action=history" title="'.$page_title_clean.'">hist</a>) <span>. .</span> <span><a href="//fr.wikipedia.org/wiki/User:'.$user.'">'.$user.'</a></span><span >. .</span>  <a href="//fr.wikipedia.org/wiki/'.$page_title.'" title="'.$page_title_clean.'" class="mw-contributions-title">'.$page_title_clean.'</a> ‎ <span class="comment">('.htmlentities($comment,ENT_QUOTES,"UTF-8").')</span>';
   }
   
   public function printIntertwinedContribs()
@@ -48,10 +48,10 @@ class contributions{
       foreach($this->contributions as $key => $value)
       {
         if ($value[0]==$this->user)
-          $color='green';
+          $color='#C6FFB3';
         else
-          $color='red';
-        echo ' <li style="color: '.$color.';">'.$this->formatContrib($value[0],$value[1],$value[2],$value[3],$value[4]).'</li>';
+          $color='#FFCCCC';
+        echo ' <li style="background-color: '.$color.' !important;">'.$this->formatContrib($value[0],$value[1],$value[2],$value[3],$value[4]).'</li>';
       }
       echo '</ul>';
     }else
