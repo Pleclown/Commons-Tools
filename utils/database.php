@@ -81,7 +81,7 @@ class metadatabase extends database
         $this->loaded = true;
         foreach ($result as $row)
         {
-          $this->wikilist[$row['dbname']]= $row['url'];
+          $this->wikilist[$row['dbname']]= preg_replace('#https?://#', '', $row['url']);
 
         }
   
@@ -100,9 +100,8 @@ class metadatabase extends database
     $result = '';
     foreach($this->wikilist as $key=>$value)
     {
-        $visiblename = preg_replace('#https?://#', '', $value);
         $selected = ($aSelectedWiki == $key ? ' selected' : '');
-        $result = $result.'<option value="'.$key.'"'.$selected.' >'.$visiblename.'</option>\n';
+        $result = $result.'<option value="'.$key.'"'.$selected.' >'.$value.'</option>\n';
     }
     return $result;
   }
