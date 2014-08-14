@@ -1,0 +1,42 @@
+[
+    {
+        "name" : "ptools-uploadcounter",
+        "title" : "Upload Counter",
+        "description" : "An upload counter for Commons (Number of files, distribution of uploads in time and type).",
+        "url" : "http://tools.wmflabs.org/ptools/uploadsum.php",
+        "keywords" : "commons, counter",
+        "author" : "Pleclown"
+    },
+    {
+        "name" : "ptools-useractions",
+        "title" : "Useractions",
+        "description" : "An action (as defined in MediaWiki) counter.",
+        "url" : "http://tools.wmflabs.org/ptools/useractions.php",
+        "keywords" : "actions, counter",
+        "author" : "Pleclown"
+    },
+    {
+        "name" : "ptools-findfiles",
+        "title" : "Commons files finder",
+        "description" : "Find files by a user in a Commons category (or files by a user not in a Commons category).",
+        "url" : "http://tools.wmflabs.org/ptools/findfiles.php",
+        "keywords" : "Commons, files, category",
+        "author" : "Pleclown"
+    },
+    {
+        "name" : "ptools-uploadersincat",
+        "title" : "Commons Uploaders in cat",
+        "description" : "List uploaders and number of files in a Commons category.",
+        "url" : "http://tools.wmflabs.org/ptools/uploadersincat.php",
+        "keywords" : "Commons, files, uploaders, category",
+        "author" : "Pleclown"
+    },
+    {
+        "name" : "ptools-intertwined",
+        "title" : "Intertwined contributions",
+        "description" : "Displays the last 1000 cumulated contributions of two users on a wiki.",
+        "url" : "http://tools.wmflabs.org/ptools/intertwined.php",
+        "keywords" : "users",
+        "author" : "Pleclown"
+    },
+]
