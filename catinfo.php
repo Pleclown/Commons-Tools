@@ -18,7 +18,7 @@ $category = '';
 
 
 ?>
-<fieldset><legend>Files in cat</legend>
+<fieldset><legend>Cat info</legend>
 <p>Get informations on a category.
 <form method="get" action="catinfo.php" id="mw-sulinfo-form1">
 <table border="0" id="mw-movepage-table"> 
