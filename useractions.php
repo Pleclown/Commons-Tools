@@ -4,7 +4,7 @@ include('utils/user.php');
 
 include('utils/database.php');
 $title = 'Useractions';
-$h1='Commons Useractions';
+$h1='Useractions';
 include('utils/header.php');
 
 
@@ -17,7 +17,7 @@ $project = '';
 }
 $metadb = new metadatabase;
 ?>
-<fieldset><legend>Uploadcounter</legend>
+<fieldset><legend>User actions</legend>
 <form method="get" action="useractions.php" id="mw-sulinfo-form1">
 <table border="0" id="mw-movepage-table"> 
 <tr><td class='mw-label'><label for="wiki">Project </label></td><td class='mw-input'><select class="form-control" name="project" id="wikiDb" required>
