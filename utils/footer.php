@@ -9,11 +9,13 @@
 </div></div>
 <div class='portlet' id='p-tools-others'><h5 style="-moz-border-radius-topright: 10px;">Tools</h5><div class='pBody'>
 <ul>
+<li>Commons :</li>
 <li><a href="uploadsum.php">Upload counter</a></li>
-<li><a href="useractions.php">User actions</a></li>
 <li><a href="findfiles.php">Find files in cat for user</a></li>
 <li><a href="uploadersincat.php">Find uploaders in cat</a></li>
 <li><a href="filesincat.php">Informations on cat</a></li>
+<li>All projects :</li>
+<li><a href="useractions.php">User actions</a></li>
 <li><a href="intertwined.php">Intertwined contributions</a></li>
 </ul>
 </div></div>
