@@ -8,14 +8,6 @@
         "author" : "Pleclown"
     },
     {
-        "name" : "ptools-useractions",
-        "title" : "Useractions",
-        "description" : "An action (as defined in MediaWiki) counter.",
-        "url" : "http://tools.wmflabs.org/ptools/useractions.php",
-        "keywords" : "actions, counter",
-        "author" : "Pleclown"
-    },
-    {
         "name" : "ptools-findfiles",
         "title" : "Commons files finder",
         "description" : "Find files by a user in a Commons category (or files by a user not in a Commons category).",
@@ -26,9 +18,25 @@
     {
         "name" : "ptools-uploadersincat",
         "title" : "Commons Uploaders in cat",
-        "description" : "List uploaders and number of files in a Commons category.",
+        "description" : "List uploaders and number of files by uploader in a Commons category.",
         "url" : "http://tools.wmflabs.org/ptools/uploadersincat.php",
         "keywords" : "Commons, files, uploaders, category",
+        "author" : "Pleclown"
+    },
+    {
+        "name" : "ptools-filesincat",
+        "title" : "Commons files in cat",
+        "description" : "Displays informations on a Commons category.",
+        "url" : "https://tools.wmflabs.org/ptools/filesincat.php",
+        "keywords" : "Commons, files, category",
+        "author" : "Pleclown"
+    },
+    {
+        "name" : "ptools-useractions",
+        "title" : "Useractions",
+        "description" : "An action (as defined in MediaWiki) counter.",
+        "url" : "http://tools.wmflabs.org/ptools/useractions.php",
+        "keywords" : "actions, counter",
         "author" : "Pleclown"
     },
     {
@@ -38,5 +46,5 @@
         "url" : "http://tools.wmflabs.org/ptools/intertwined.php",
         "keywords" : "users",
         "author" : "Pleclown"
-    },
+    }
 ]
