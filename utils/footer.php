@@ -5,6 +5,7 @@
 <ul>
 <li><a href="/">Wikimedia Tool Labs</a></li>
 <li><a href="/ptools/">Main Page</a></li>
+<li><a href="/hay/directory">Tools directory</a></li>
 </ul>
 </div></div>
 <div class='portlet' id='p-tools-others'><h5 style="-moz-border-radius-topright: 10px;">Tools</h5><div class='pBody'>
