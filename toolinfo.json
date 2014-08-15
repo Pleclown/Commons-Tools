@@ -6,6 +6,7 @@
         "url" : "http://tools.wmflabs.org/ptools/uploadsum.php",
         "keywords" : "commons, counter",
         "author" : "Pleclown"
+        "repository" : "https://github.com/Pleclown/Commons-Tools.git"
     },
     {
         "name" : "ptools-findfiles",
@@ -14,6 +15,7 @@
         "url" : "http://tools.wmflabs.org/ptools/findfiles.php",
         "keywords" : "Commons, files, category",
         "author" : "Pleclown"
+        "repository" : "https://github.com/Pleclown/Commons-Tools.git"
     },
     {
         "name" : "ptools-uploadersincat",
@@ -22,6 +24,7 @@
         "url" : "http://tools.wmflabs.org/ptools/uploadersincat.php",
         "keywords" : "Commons, files, uploaders, category",
         "author" : "Pleclown"
+        "repository" : "https://github.com/Pleclown/Commons-Tools.git"
     },
     {
         "name" : "ptools-filesincat",
@@ -30,6 +33,7 @@
         "url" : "https://tools.wmflabs.org/ptools/filesincat.php",
         "keywords" : "Commons, files, category",
         "author" : "Pleclown"
+        "repository" : "https://github.com/Pleclown/Commons-Tools.git"
     },
     {
         "name" : "ptools-useractions",
@@ -38,6 +42,7 @@
         "url" : "http://tools.wmflabs.org/ptools/useractions.php",
         "keywords" : "actions, counter",
         "author" : "Pleclown"
+        "repository" : "https://github.com/Pleclown/Commons-Tools.git"
     },
     {
         "name" : "ptools-intertwined",
@@ -46,5 +51,6 @@
         "url" : "http://tools.wmflabs.org/ptools/intertwined.php",
         "keywords" : "users",
         "author" : "Pleclown"
+        "repository" : "https://github.com/Pleclown/Commons-Tools.git"
     }
 ]
