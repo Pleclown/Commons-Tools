@@ -18,8 +18,8 @@ $category = '';
 
 
 ?>
-<fieldset><legend>Files in cat</legend>
-<p>Get information on files for a category.
+<fieldset><legend>Files in category</legend>
+<p>Get information on files for a category, including count of members and time of uploads.
 <form method="get" action="filesincat.php" id="mw-sulinfo-form1">
 <table border="0" id="mw-movepage-table"> 
 <tr><td class='mw-label'><label for="category">Category :</label></td><td class='mw-input'><input id="category" name="category" type="text" value="<?php echo $category; ?>"/></td>
