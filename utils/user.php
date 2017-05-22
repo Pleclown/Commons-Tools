@@ -168,7 +168,7 @@ User NOT found !
 }
 ?>
 </fieldset>
-<?
+<?php
    	}
    }
    
@@ -262,8 +262,5 @@ User NOT found !
 </fieldset>
 <?php
    }
- 
 }
-
-
 ?>
