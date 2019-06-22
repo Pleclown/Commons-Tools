@@ -19,6 +19,7 @@ td { vertical-align: top; }
 <meta http-equiv="imagetoolbar" content="no" /><![endif]-->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <body class="mediawiki"><div id="globalWrapper"><div id="column-content"><div id="content">
 <h1><?php echo $h1; ?></h1>
 <br />
