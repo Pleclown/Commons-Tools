@@ -22,16 +22,16 @@ function octets($n){
 
 function PieChart($array, $column,$title,$div)
 {
-  $Result ='      google.load("current", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
+  $Result ='      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
-        var data = google.visualization.arrayToDataTable(
+        var data = google.visualization.arrayToDataTable([
 	[\'Type\',\''.$column.'\']';
 	foreach($array as $key => $value)
 	{
 		$Result.=',[\''.$key.'\','.$value.']';	
 	}
-	$Result.=');
+	$Result.=']);
 
         var options = {
           width: 600, height: 500,
@@ -47,8 +47,8 @@ function PieChart($array, $column,$title,$div)
 
 function MonthBarGraph($array, $column,$title,$div)
 {
-	$Result = 'google.load("current", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
+	$Result = 'google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = new google.visualization.DataTable();
         data.addColumn(\'string\', \'Month\');
