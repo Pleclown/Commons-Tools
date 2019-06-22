@@ -234,6 +234,7 @@ User NOT found !
 <?php
   echo PieChart($this->array_total_count,'Count','Count of file types','chart_div_b');
 ?>
+	</script>
 <div id="chart_div_b" style="float:right"></div>
 <?php
  echo $str_desccount;
