@@ -3,8 +3,8 @@
 <div class="portlet" id="p-logo"><a style="background-image:url('logo.png');background-position:center;
 	background-repeat:no-repeat;
 	background-size:cover;
-	height:200px;
-	width:200px;" href="/ptools/" title="Main Page" ></a></div>
+	height:120px;
+	width:120px;" href="/ptools/" title="Main Page" ></a></div>
 <div class='portlet' id='p-navigation'><h5 style="-moz-border-radius-topright: 10px;">Navigation</h5><div class='pBody'>
 <ul>
 <li><a href="/">Wikimedia Tool Labs</a></li>
