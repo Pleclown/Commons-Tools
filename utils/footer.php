@@ -1,6 +1,10 @@
 </div></div>
 <div id="column-one">
-<div class="portlet" id="p-logo"><a style="background-image:url('logo.png')" href="/ptools/" title="Main Page"></a></div>
+<div class="portlet" id="p-logo"><a style="background-image:url('logo.png')" href="/ptools/" title="Main Page" background-position:center;
+	background-repeat:no-repeat;
+	background-size:cover;
+	height:200px;
+	width:200px;></a></div>
 <div class='portlet' id='p-navigation'><h5 style="-moz-border-radius-topright: 10px;">Navigation</h5><div class='pBody'>
 <ul>
 <li><a href="/">Wikimedia Tool Labs</a></li>
