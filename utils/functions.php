@@ -25,15 +25,13 @@ function PieChart($array, $column,$title,$div)
   $Result ='      google.load("current", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
-        var data = new google.visualization.DataTable();
-        data.addColumn(\'string\', \'Type\');
-        data.addColumn(\'number\', \''.$column.'\');
-        data.addRows([';
+        var data = google.visualization.arrayToDataTable(
+	[\'Type\',\''.$column.'\']';
 	foreach($array as $key => $value)
 	{
-		$Result.='[\''.$key.'\','.$value.'],';	
+		$Result.=',[\''.$key.'\','.$value.'],';	
 	}
-	$Result.='        ]);
+	$Result.=');
 
         var options = {
           width: 600, height: 500,
