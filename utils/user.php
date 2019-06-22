@@ -66,7 +66,7 @@ class user{
 
    public function getUserActions()
    {
-   	$result = $this->connection->execute(user::QUERY_USER_ACTIONS,array($this->user_id));
+   	$result = $this->connection->execute(user::QUERY_USER_ACTIONS,array($this->user_name));
 	if ($result != NULL){
 	  $this->useractions = true;
 	  foreach($result as $row)
@@ -175,7 +175,7 @@ User NOT found !
    public function getUserUploadsSummary()
    {
 
-	$result = $this->connection->execute(user::QUERY_USER_UPLOADS_SUMMARY,array($this->user_id));
+	$result = $this->connection->execute(user::QUERY_USER_UPLOADS_SUMMARY,array($this->user_name));
 	if ($result != NULL){
 	  $this->uploadsum = true;
 		foreach($result as $row)
