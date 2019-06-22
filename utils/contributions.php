@@ -3,7 +3,7 @@ include_once('functions.php');
 
 class contributions{
 
-  const QUERY_INTERTWINED_CONTRIBS = 'select rev_id, rev_user_text, page_title, rev_timestamp, rev_comment, page_namespace FROM revision_userindex, page WHERE (rev_user_text = ? or rev_user_text = ?) AND page_id=rev_page order by rev_id desc limit 1000';
+  const QUERY_INTERTWINED_CONTRIBS = 'select rev_id, rev_user_text, page_title, rev_timestamp, rev_comment, page_namespace FROM revision_userindex, page, actor WHERE actorid = rev_actor and (actor_name = ? or actor_name = ?) AND page_id=rev_page order by rev_id desc limit 1000';
 
   public $loaded= false;
   public $user;
