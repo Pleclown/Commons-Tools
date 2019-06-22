@@ -29,7 +29,7 @@ function PieChart($array, $column,$title,$div)
 	[\'Type\',\''.$column.'\']';
 	foreach($array as $key => $value)
 	{
-		$Result.=',[\''.$key.'\','.$value.'],';	
+		$Result.=',[\''.$key.'\','.$value.']';	
 	}
 	$Result.=');
 
