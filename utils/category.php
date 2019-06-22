@@ -4,9 +4,9 @@ class category{
 
 const QUERY_CAT_BY_NAME ='select cat_pages, cat_subcats, cat_files from category where cat_title = ?;';
 
-const QUERY_USER_IN_CAT ='select distinct page_title from page, image where page_namespace = 6 and img_name = page_title and img_user = ? and page_id in (SELECT distinct cl_from from categorylinks where cl_to IN (?))';
+const QUERY_USER_IN_CAT ='select distinct page_title from page, image, actor where page_namespace = 6 and img_name = page_title and img_actor = actor_id and actor_name = ? and page_id in (SELECT distinct cl_from from categorylinks where cl_to IN (?))';
 
-const QUERY_USER_NOT_IN_CAT ='select distinct page_title from page, image where page_namespace = 6 and img_name = page_title and img_user = ? and page_id not in (SELECT distinct cl_from from categorylinks where cl_to IN (?))';
+const QUERY_USER_NOT_IN_CAT ='select distinct page_title from page, image, actor where page_namespace = 6 and img_name = page_title and img_actor = actor_id and actor_name = ? and page_id not in (SELECT distinct cl_from from categorylinks where cl_to IN (?))';
 
 const QUERY_UPLOADERS_IN_CAT = 'select distinct actor_name, count(img_name) as compte from image, page, categorylinks, actor where page_namespace = 6 and img_name = page_title and page_id = cl_from and cl_to in (?) and actor_id=img_actor group by img_actor order by count(img_name) desc';
 
