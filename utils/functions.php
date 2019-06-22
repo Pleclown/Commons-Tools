@@ -22,7 +22,7 @@ function octets($n){
 
 function PieChart($array, $column,$title,$div)
 {
-  $Result ='      google.load("visualization", "1", {packages:["corechart"]});
+  $Result ='      google.load("current", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = new google.visualization.DataTable();
@@ -49,7 +49,7 @@ function PieChart($array, $column,$title,$div)
 
 function MonthBarGraph($array, $column,$title,$div)
 {
-	$Result = 'google.load("visualization", "1", {packages:["corechart"]});
+	$Result = 'google.load("current", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = new google.visualization.DataTable();
