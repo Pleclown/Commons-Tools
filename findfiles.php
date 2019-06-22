@@ -43,7 +43,7 @@ $user->printUser();
 $cat = new category($db,$category);
 $cat->printCat();
 
-$cat->getFilesInCatFor($user->user_id, $reverse);
+$cat->getFilesInCatFor($user->user_name, $reverse);
 $cat->printFilesInCatFor();
 
 }
