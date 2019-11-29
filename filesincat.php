@@ -9,8 +9,8 @@ $h1='Commons files in cat';
 include('utils/header.php');
 
 if (!empty($_GET)) {
-$name=$_GET['user'];
-$category=$_GET['category'];
+$name= noHTML($_GET['user']);
+$category= noHTML($_GET['category']);
 }else{
 $name='';
 $category = '';
