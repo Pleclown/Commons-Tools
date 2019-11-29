@@ -9,8 +9,8 @@ include('utils/header.php');
 
 
 if (!empty($_GET)) {
-$project = $_GET['project'];
-        $name=$_GET['user'];
+$project = noHTML($_GET['project']);
+        $name=noHTML($_GET['user']);
 }else{
         $name='';
 $project = '';
