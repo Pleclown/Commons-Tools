@@ -10,9 +10,9 @@ $h1='Intertwined contributions';
 include('utils/header.php');
 
 if (!empty($_GET)) {
-$project = $_GET['project'];
-$user1=$_GET['user1'];
-$user2=$_GET['user2'];
+$project = noHTML($_GET['project']);
+$user1= noHTML($_GET['user1']);
+$user2=noHTML($_GET['user2']);
 }else{
 $project = '';
 $user1='';
