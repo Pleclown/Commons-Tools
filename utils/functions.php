@@ -1,4 +1,10 @@
 <?php
+
+function noHTML($input, $encoding = 'UTF-8')
+{
+    return htmlentities($input, ENT_QUOTES | ENT_HTML5, $encoding);
+}
+
 function octets($n){
 	$i=0;
 	while ($n > 1024){
