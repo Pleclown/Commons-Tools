@@ -9,7 +9,7 @@ include('utils/header.php');
 
 
 if (!empty($_GET)) {
-	$name=$_GET['user'];
+	$name=noHTML($_GET['user']);
 }else{
 	$name='';
 }
