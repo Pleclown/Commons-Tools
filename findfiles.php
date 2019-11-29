@@ -11,9 +11,9 @@ $h1='Commons files finder';
 include('utils/header.php');
 
 if (!empty($_GET)) {
-$name=$_GET['user'];
-$category=$_GET['category'];
-$reverse=$_GET['reverse'];
+$name=noHTML($_GET['user']);
+$category=noHTML($_GET['category']);
+$reverse=noHTML($_GET['reverse']);
 }else{
 $name='';
 $category = '';
