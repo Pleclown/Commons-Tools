@@ -10,7 +10,7 @@ $h1='Commons Uploaders in cat';
 include('utils/header.php');
 
 if (!empty($_GET)) {
-$category=$_GET['category'];
+$category=noHTML($_GET['category']);
 }else{
 $category = '';
 }
