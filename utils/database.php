@@ -4,7 +4,7 @@ public $connection;
 public $connected = false;
   public function connect($dbname){
     //$ts_pw = posix_getpwuid(posix_getuid());
-    $ts_mycnf = parse_ini_file("../replica.my.cnf");
+    $ts_mycnf = parse_ini_file(getenv("DOCUMENT_ROOT") . "/../replica.my.cnf");
     try {
       if ($dbname == 'meta')
       {
