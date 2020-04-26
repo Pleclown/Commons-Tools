@@ -10,7 +10,7 @@ $h1='Commons Uploaders in cat';
 include('utils/header.php');
 
 if (!empty($_GET)) {
-$category=noHTML($_GET['category']);
+$category=$_GET['category'];
 }else{
 $category = '';
 }
@@ -20,7 +20,7 @@ $category = '';
 <fieldset><legend>Find uploaders in cat</legend>
 <form method="get" action="uploadersincat.php" id="mw-sulinfo-form1">
 <table border="0" id="mw-movepage-table"> 
-<tr><td class='mw-label'><label for="category">Category :</label></td><td class='mw-input'><input id="category" name="category" type="text" value="<?php echo $category; ?>"/></td>
+<tr><td class='mw-label'><label for="category">Category :</label></td><td class='mw-input'><input id="category" name="category" type="text" value="<?php echo noHTML($category); ?>"/></td>
 <tr><td>&#160;</td><td class='mw-submit'><input type="submit" value="Go !" /></td></tr>
 </table>
 </form></fieldset>
