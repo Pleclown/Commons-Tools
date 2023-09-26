@@ -13,6 +13,9 @@ if (!empty($_GET)) {
 $project = noHTML($_GET['project']);
 $user1= noHTML($_GET['user1']);
 $user2=noHTML($_GET['user2']);
+$after=noHTML($_GET['after']);
+$before=noHTML($_GET['before']);
+	
 }else{
 $project = '';
 $user1='';
@@ -44,7 +47,7 @@ $db = new database;
 if ($db->connect($project)) {
 $contribs = new contributions($db,$project,$user1,$metadb);
 
-$contribs->getIntertwinedContribs($user2);
+$contribs->getIntertwinedContribs($user2,$after,$before);
 $contribs->printIntertwinedContribs();
 }
 }
