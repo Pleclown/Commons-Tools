@@ -3,7 +3,17 @@ include_once('functions.php');
 
 class contributions{
 
-  const QUERY_INTERTWINED_CONTRIBS = 'select rev_id, rev_user_text, page_title, rev_timestamp, rev_comment, page_namespace FROM revision_userindex, page, actor WHERE actorid = rev_actor and (actor_name = ? or actor_name = ?) AND page_id=rev_page order by rev_id desc limit 1000';
+  const QUERY_INTERTWINED_CONTRIBS_BASE = 'select rev_id, page_title, rev_timestamp, page_namespace,actor_name, comment_text  
+FROM revision_userindex r
+left join page p on p.page_id = r.rev_page
+left join actor a on a.actor_id = r.rev_actor
+left join comment c on c.comment_id=r.rev_comment_id
+WHERE (actor_name = ? or actor_name = ?)';
+
+	const QUERY_INTERTWINED_CONTRIBS_AFTER = ' AND rev_timestamp > TIMESTAMP(?)';
+	const QUERY_INTERTWINED_CONTRIBS_BETWEEN = ' AND rev_timestamp > TIMESTAMP(?) AND rev_timestamp < TIMESTAMP(?) '; 
+	const QUERY_INTERTWINED_CONTRIBS_ORDER = ' order by rev_id desc';
+	const QUERY_INTERTWINED_CONTRIBS_LIMIT = ' limit 1000';
 
   public $loaded= false;
   public $user;
@@ -23,15 +33,46 @@ class contributions{
     $this->meta = $aMeta;
   }
   
-  public function getIntertwinedContribs($aName)
+  public function getIntertwinedContribs($aName,$aAfter,$aBefore)
   {
     $this->intertwineduser = $aName;
+    $this->after = $aAfter;
+    $this->before = $aBefore;
+
+    if ($this->after != ''){
+	if ($this->before != ''){
+	    $this->type=3;
+	}else{
+	    $this->type=2;
+	}
+    }else{
+        $this->type=1;
+    }
+	  
+	  
+    $query = contributions::QUERY_INTERTWINED_CONTRIBS_BASE;
+    switch ($this->type) {
+        case 1:	  
+	    $query .= contributions::QUERY_INTERTWINED_CONTRIBS_ORDER;
+	    $query .= contributions::QUERY_INTERTWINED_CONTRIBS_LIMIT;
+            $result = $this->connection->execute($query,array($this->user, $this->intertwineduser));
+	    break;
+        case 2:
+	    $query .= contributions::QUERY_INTERTWINED_CONTRIBS_AFTER;
+	    $query .= contributions::QUERY_INTERTWINED_CONTRIBS_ORDER;
+	    $result = $this->connection->execute($query,array($this->user, $this->intertwineduser,$this->after));
+            break;	
+        case 3:
+	    $query .= contributions::QUERY_INTERTWINED_CONTRIBS_BETWEEN;
+	    $query .= contributions::QUERY_INTERTWINED_CONTRIBS_ORDER;
+	    $result = $this->connection->execute($query,array($this->user, $this->intertwineduser,$this->after,$this->before));
+            break;
+    }
     
-    $result = $this->connection->execute(contributions::QUERY_INTERTWINED_CONTRIBS,array($this->user, $this->intertwineduser));
     if ($result != NULL){
       foreach ($result as $row)
       {
-        $this->contributions[$row['rev_id']]= array($row['rev_user_text'],$row['page_title'],$row['rev_timestamp'],$row['rev_id'],$row['rev_comment'],$row['page_namespace']);
+        $this->contributions[$row['rev_id']]= array($row['actor_name'],$row['page_title'],$row['rev_timestamp'],$row['rev_id'],$row['comment_text'],$row['page_namespace']);
       }
       $this->loaded = true;
     }
