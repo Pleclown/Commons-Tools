@@ -39,23 +39,40 @@ WHERE (actor_name = ? or actor_name = ?)';
     $this->after = $aAfter;
     $this->before = $aBefore;
 
+    if ($this->after != ''){
+	if ($this->before != ''){
+	    $this->type=3;
+	}else{
+	    $this->type=2;
+	}
+    }else{
+        $this->type=1;
+    }
+	  
+	  
     $query = contributions::QUERY_INTERTWINED_CONTRIBS;
-    if ($aAfter != ''){
-	    if ($aBefore != ''){
-		    $query .= contributions::QUERY_INTERTWINED_CONTRIBS_BETWEEN;
-	    }else{
-		    $query .= contributions::QUERY_INTERTWINED_CONTRIBS_AFTER;
-	    }
-    }
-    $query .= contributions::QUERY_INTERTWINED_CONTRIBS_ORDER;
-    if ($aAfter == ''){
+    switch ($this->type) {
+        case 1:	  
+	    $query .= contributions::QUERY_INTERTWINED_CONTRIBS_ORDER;
 	    $query .= contributions::QUERY_INTERTWINED_CONTRIBS_LIMIT;
+            $result = $this->connection->execute($query,array($this->user, $this->intertwineduser));
+	    break;
+        case 2:
+	    $query .= contributions::QUERY_INTERTWINED_CONTRIBS_AFTER;
+	    $query .= contributions::QUERY_INTERTWINED_CONTRIBS_ORDER;
+	    $result = $this->connection->execute($query,array($this->user, $this->intertwineduser,$this->after));
+            break;	
+        case 3:
+	    $query .= contributions::QUERY_INTERTWINED_CONTRIBS_BETWEEN;
+	    $query .= contributions::QUERY_INTERTWINED_CONTRIBS_ORDER;
+	    $result = $this->connection->execute($query,array($this->user, $this->intertwineduser,$this->after,$this->before));
+            break;
     }
-    $result = $this->connection->execute($query,array($this->user, $this->intertwineduser,$this->after,$this->before));
+    
     if ($result != NULL){
       foreach ($result as $row)
       {
-        $this->contributions[$row['rev_id']]= array($row['rev_user_text'],$row['page_title'],$row['rev_timestamp'],$row['rev_id'],$row['rev_comment'],$row['page_namespace']);
+        $this->contributions[$row['rev_id']]= array($row['actor_name'],$row['page_title'],$row['rev_timestamp'],$row['rev_id'],$row['comment_text'],$row['page_namespace']);
       }
       $this->loaded = true;
     }
