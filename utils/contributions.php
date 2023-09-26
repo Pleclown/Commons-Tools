@@ -50,7 +50,7 @@ WHERE (actor_name = ? or actor_name = ?)';
     }
 	  
 	  
-    $query = contributions::QUERY_INTERTWINED_CONTRIBS;
+    $query = contributions::QUERY_INTERTWINED_CONTRIBS_BASE;
     switch ($this->type) {
         case 1:	  
 	    $query .= contributions::QUERY_INTERTWINED_CONTRIBS_ORDER;
