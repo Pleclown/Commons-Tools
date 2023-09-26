@@ -9,7 +9,7 @@ include('utils/header.php');
 
 
 if (!empty($_GET)) {
-	$name=noHTML($_GET['user']);
+	$name=$_GET['user'];
 }else{
 	$name='';
 }
@@ -17,7 +17,7 @@ if (!empty($_GET)) {
 <fieldset><legend>Uploadcounter</legend>
 <form method="get" action="uploadsum.php" id="mw-sulinfo-form1">
 <table border="0" id="mw-movepage-table"> 
-<tr><td class='mw-label'><label for="username">Username :</label></td><td class='mw-input'><input id="user" name="user" type="text" value="<?php echo $name; ?>"/></td><tr><td>&#160;</td><td class='mw-submit'><input type="submit" value="Go !" /></td></tr>
+<tr><td class='mw-label'><label for="username">Username :</label></td><td class='mw-input'><input id="user" name="user" type="text" value="<?php echo noHTML($name); ?>"/></td><tr><td>&#160;</td><td class='mw-submit'><input type="submit" value="Go !" /></td></tr>
 </table>
 </form></fieldset>
 <?php
