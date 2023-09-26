@@ -159,7 +159,7 @@ Cat NOT found !
   public function printFilesInCatByMonth()
   {
 ?>
-<fieldset><legend>By month</legend>
+<fieldset><legend>By month - Chart</legend>
         
         <script type="text/javascript">
 <?php
@@ -172,7 +172,29 @@ Cat NOT found !
 <?php
   }
 
-
+  public function printFilesInCatByMonthAsTable()
+  {
+?>
+<fieldset><legend>By month - Table</legend>
+        
+<table>
+  <tr>
+    <th>Month</th>
+    <th>Files</th>
+  </tr>
+<?php
+     foreach ($this->filesInCatByMonth as $key => $value)
+    {
+      echo '<tr>
+  <td>'.$key.'</td>
+  <td>'.$value.'</td>
+  <tr>';
+    }
+?>
+</table>
+</fieldset>
+<?php
+  }
 
 
 
