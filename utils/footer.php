@@ -7,9 +7,9 @@
 	width:120px;" href="/ptools/" title="Main Page" ></a></div>
 <div class='portlet' id='p-navigation'><h5 style="-moz-border-radius-topright: 10px;">Navigation</h5><div class='pBody'>
 <ul>
-<li><a href="/">Wikimedia Tool Labs</a></li>
-<li><a href="/ptools/">Main Page</a></li>
-<li><a href="/hay/directory">Tools directory</a></li>
+<li><a href="https://toolforge.org/">Wikimedia Toolforge</a></li>
+<li><a href="/">Main Page</a></li>
+<li><a href="https://hay.toolforge.org/directory/">Tools directory</a></li>
 </ul>
 </div></div>
 <div class='portlet' id='p-tools-others'><h5 style="-moz-border-radius-topright: 10px;">Tools</h5><div class='pBody'>
