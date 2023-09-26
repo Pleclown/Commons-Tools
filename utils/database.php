@@ -12,13 +12,13 @@ public $connected = false;
     try {
       if ($dbname == 'meta')
       {
-        $db = 'enwiki';
+        $db = 'meta.analytics.db.svc.wikimedia.cloud';
       }
       else
       {
-        $db = $dbname;
+        $db = $dbname.'.labsdb';
       }
-      $this->connection = new PDO('mysql:host='.$db.'.labsdb;dbname='.$dbname.'_p', $ts_mycnf['user'], $ts_mycnf['password']);
+      $this->connection = new PDO('mysql:host='.$db.';dbname='.$dbname.'_p', $ts_mycnf['user'], $ts_mycnf['password']);
       $this->connected = true;
     
     } catch (PDOException $e) {
