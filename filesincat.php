@@ -34,6 +34,7 @@ $cat = new category($db,$category);
 $cat->printCat();
 $cat->getFilesInCatByMonth();
 $cat->printFilesInCatByMonth();
+$cat->printFilesInCatByMonthAsTable();
 }
 }
 include('utils/footer.php');
