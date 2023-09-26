@@ -11,9 +11,9 @@ $h1='Commons files finder';
 include('utils/header.php');
 
 if (!empty($_GET)) {
-$name=noHTML($_GET['user']);
-$category=noHTML($_GET['category']);
-$reverse=noHTML($_GET['reverse']);
+$name=$_GET['user'];
+$category=$_GET['category'];
+$reverse=$_GET['reverse'];
 }else{
 $name='';
 $category = '';
@@ -26,8 +26,8 @@ $reverse = '';
 <p>Get the files from a user for a category. If reverse is set, get the files from the user NOT in the category.
 <form method="get" action="findfiles.php" id="mw-sulinfo-form1">
 <table border="0" id="mw-movepage-table"> 
-<tr><td class='mw-label'><label for="username">Username :</label></td><td class='mw-input'><input id="user" name="user" type="text" value="<?php echo $name; ?>"/></td>
-<tr><td class='mw-label'><label for="category">Category :</label></td><td class='mw-input'><input id="category" name="category" type="text" value="<?php echo $category; ?>"/></td>
+<tr><td class='mw-label'><label for="username">Username :</label></td><td class='mw-input'><input id="user" name="user" type="text" value="<?php echo noHTML($name); ?>"/></td>
+<tr><td class='mw-label'><label for="category">Category :</label></td><td class='mw-input'><input id="category" name="category" type="text" value="<?php echo noHTML($category); ?>"/></td>
 <tr><td class='mw-label'><label for="reverse">Reverse :</label></td><td class='mw-input'><input id="reverse" name="reverse" type="checkbox" value="true" <?php if ($reverse == 'true') echo 'checked'; ?>/></td>
 <tr><td>&#160;</td><td class='mw-submit'><input type="submit" value="Go !" /></td></tr>
 </table>
