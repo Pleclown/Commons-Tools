@@ -20,12 +20,16 @@ $before=noHTML($_GET['before']);
 $project = '';
 $user1='';
 $user2='';
+$after='';
+$before='';
 }
 
 $metadb = new metadatabase;
 ?>
 <fieldset><legend>Intertwined contributions</legend>
-This tool displays the last 1000 cumulated contributions of the two users. If you want to see all the pages edited by both users, see <a href='//tools.wmflabs.org/intersect-contribs/' title='Intersect contribs'>Intersect contribs</a> by Pietrodn.
+This tool displays contributions of the two users.
+The dates should be in the format YYYY-MM-DD. If no date is selected, the last 1000 cumulated contributions will be displayed.	
+If you want to see all the pages edited by both users, see <a href='//tools.wmflabs.org/intersect-contribs/' title='Intersect contribs'>Intersect contribs</a> by Pietrodn.
 </fieldset>
 <fieldset><legend>Users</legend>
 <form method="get" action="intertwined.php" id="mw-sulinfo-form1">
@@ -37,6 +41,8 @@ This tool displays the last 1000 cumulated contributions of the two users. If yo
 					</select></td></tr>
 <tr><td class='mw-label'><label for="user1">User 1 :</label></td><td class='mw-input'><input id="user1" name="user1" type="text" value="<?php echo $user1; ?>"/></td>
 <tr><td class='mw-label'><label for="user2">User 2 :</label></td><td class='mw-input'><input id="user2" name="user2" type="text" value="<?php echo $user2; ?>"/></td>
+<tr><td class='mw-label'><label for="after">After :</label></td><td class='mw-input'><input id="after" name="after" type="text" value="<?php echo $after; ?>"/></td>
+<tr><td class='mw-label'><label for="before">Before :</label></td><td class='mw-input'><input id="before" name="before" type="text" value="<?php echo $before; ?>"/></td>
 <tr><td>&#160;</td><td class='mw-submit'><input type="submit" value="Go !" /></td></tr>
 </table>
 </form></fieldset>
